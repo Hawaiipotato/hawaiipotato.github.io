@@ -1,1 +1,633 @@
-<h1>Potato Toast!</h1>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>𝑪𝒊𝒂𝒍𝒍𝒐～(∠・ω< )⌒★</title>
+    <!-- 添加网站图标占位符 -->
+    <link rel="icon" type="image/x-icon" href="./favicon.ico">
+    <style>
+        body {
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        /* 添加导航栏样式 */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            z-index: 1000;
+            transition: transform 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-left a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .nav-right {
+            display: flex;
+            align-items: center;
+            margin-right: 20px;
+        }
+        
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            margin-right: 15px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #667eea;
+            font-weight: bold;
+            margin: 0 10px;
+        }
+        
+        .github-link {
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #667eea;
+            color: white;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        .github-icon {
+            fill: white;
+            width: 24px;
+            height: 24px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* 修改header为全屏 */
+        header {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            /* 添加背景图占位符，使用相对路径 */
+            background-image: url('./background.png');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            color: #ffffaf;
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            color: #ffffaf;
+        }
+        
+        /* 修改section为全屏 */
+        .section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 60px 20px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .section:last-child {
+            border-bottom: none;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2rem;
+            color: #333;
+        }
+        
+        .bio-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            align-items: center;
+            width: 100%;
+        }
+        
+        .bio-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .bio-text p {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+        
+        .bio-image {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+        }
+        
+        /* 修改头像占位符 */
+        .bio-image-placeholder {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 0.9rem;
+            /* 添加头像占位符 */
+            background-image: url('./cathead.jpg');
+            background-size: cover;
+            background-position: center;
+            /* 设置默认背景色，避免纯白色 */
+            background-color: #f0f0f0;
+        }
+        
+        /* 新增个人简介样式 */
+        .profile-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .profile-name {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        .profile-title {
+            font-size: 1.2rem;
+            color: #667eea;
+            margin-bottom: 30px;
+        }
+        
+        /* 新增两栏布局样式 */
+        .profile-main {
+            display: flex;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .profile-sidebar {
+            flex: 1;
+            min-width: 250px;
+            text-align: center;
+        }
+        
+        .profile-content {
+            flex: 2;
+            min-width: 300px;
+        }
+        
+        .profile-section {
+            margin-bottom: 40px;
+        }
+        
+        .profile-section h3 {
+            font-size: 1.5rem;
+            color: #333;
+            border-left: 4px solid #667eea;
+            padding-left: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .skill-category {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .skill-category h4 {
+            margin-top: 0;
+            color: #333;
+        }
+        
+        .interests-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .interest-item {
+            background: #667eea;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .contact-icon svg {
+            width: 24px;
+            height: 24px;
+        }
+        
+        .bilibili-icon {
+            fill: currentColor;
+            width: 24px;
+            height: 24px;
+            flex: none;
+            line-height: 1;
+        }
+        
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .partner-card {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .partner-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+        }
+        
+        .partner-logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-weight: bold;
+            /* 设置默认背景色，避免纯白色 */
+            background-color: #f0f0f0;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .partner-name {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        .partner-description {
+            color: #666;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+        
+        .partner-link {
+            display: inline-block;
+            padding: 8px 16px;
+            background-color: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        
+        .partner-link:hover {
+            background-color: #5a6fd8;
+        }
+        
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .bio-content {
+                flex-direction: column;
+            }
+            
+            nav {
+                flex-direction: column;
+                padding: 10px;
+            }
+            
+            .nav-left, .nav-right {
+                margin: 5px 0;
+            }
+            
+            .nav-links {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+            
+            .nav-right {
+                margin-right: 0; /* 在小屏幕上移除右边距 */
+            }
+            
+            .profile-name {
+                font-size: 2rem;
+            }
+            
+            .skills-container {
+                grid-template-columns: 1fr;
+            }
+            
+            /* 在小屏幕上将两栏布局改为纵向排列 */
+            .profile-main {
+                flex-direction: column;
+            }
+        }
+        
+        /* 修复右侧导航栏超出范围的样式 */
+        .nav-right {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+            max-width: 70%;
+        }
+        
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            margin-right: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .nav-links a {
+            white-space: nowrap;
+            margin: 0 10px;
+        }
+        
+        .github-link {
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #667eea;
+            color: white;
+            font-weight: bold;
+            margin-right: 10px;
+            flex-shrink: 0;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-right {
+                max-width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 添加导航栏 -->
+    <nav id="navbar">
+        <div class="nav-left">
+            <a href="#">土豆的小站</a>
+        </div>
+        <div class="nav-right">
+            <div class="nav-links">
+                <a href="#welcome">首页</a>
+                <a href="#about">关于我</a>
+                <a href="#partners">合作伙伴</a>
+            </div>
+            <a href="https://github.com/Hawaiipotato" target="_blank" class="github-link">
+                <svg class="github-icon" viewBox="0 0 16 16" version="1.1" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                </svg>
+            </a>
+        </div>
+    </nav>
+
+    <!-- 欢迎内容 -->
+    <header id="welcome">
+        <div class="container">
+            <h1>欢迎来到我的个人主页</h1>
+            <p>探索我的世界，发现更多可能</p>
+        </div>
+    </header>
+
+    <!-- 个人基本信息简介 -->
+    <section class="section" id="about">
+        <div class="container">
+            <!-- 两栏布局：头像在左，简介在右 -->
+            <div class="profile-main">
+                <div class="profile-sidebar">
+                    <div class="bio-image-placeholder"></div>
+                    <h2 class="profile-name">Potato</h2>
+                    <div class="profile-title">开发者 & 技术爱好者</div>
+                </div>
+                <div class="profile-content">
+                    <div class="profile-section">
+                        <h3>个人简介</h3>
+                        <p>你好！我是夏威夷土豆，一名热爱技术与创新的专业人士。我对编程和技术创新充满热情，并在该领域积累了丰富的经验。</p>
+                        <p>在我的职业生涯中，我一直致力于通过技术解决实际问题，通过不断学习和实践来提升自己的技能。</p>
+                        <p>我相信持续学习和团队协作的力量，喜欢接受挑战并寻找创新的解决方案。业余时间，我喜欢探索新技术、参与开源项目以及在技术社区中与其他开发者交流。</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 其他部分继续放在下面 -->
+            <div class="profile-section">
+                <h3>技能特长</h3>
+                <div class="skills-container">
+                    <div class="skill-category">
+                        <h4>前端技术</h4>
+                        <p>NaN</p>
+                    </div>
+                    <div class="skill-category">
+                        <h4>后端技术</h4>
+                        <p>C/C++, Python, Java, simple SQL</p>
+                    </div>
+                    <div class="skill-category">
+                        <h4>其他技能</h4>
+                        <p>Git, Windows Debugging</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="profile-section">
+                <h3>兴趣爱好</h3>
+                <div class="interests-container">
+                    <div class="interest-item">修机 修机 还是TMD修机</div>
+                    <div class="interest-item">狠狠鞭策小AI给我干活</div>
+                    <div class="interest-item">编一点奇奇怪怪的小script</div>
+                    <div class="interest-item">捯饬玩转电脑的各种奇淫妙计</div>
+                    <div class="interest-item">读点好书 看点美景</div>
+                    <div class="interest-item">看犯罪动作片然后豆瓣开喷</div>
+                </div>
+            </div>
+            
+            <div class="profile-section">
+                <h3>联系方式</h3>
+                <div class="contact-container">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <title>Email</title>
+                                <path d="M12 .02c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm6.99 6.98l-6.99 5.666-6.991-5.666h13.981zm.01 10h-14v-8.505l7 5.673 7-5.672v8.504z"/>
+                            </svg>
+                        </div>
+                        <div><a href="mailto:hawaiipotatoes@gmail.com" style="text-decoration: none; color: inherit;">hawaiipotatoes@gmail.com</a></div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <title>GitHub</title>
+                                <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+                            </svg>
+                        </div>
+                        <div><a href="https://github.com/Hawaiipotato" target="_blank" style="text-decoration: none; color: inherit;">@Hawaiipotato</a></div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <title>Bilibili</title>
+                                <path d="M4.977 3.561a1.31 1.31 0 111.818-1.884l2.828 2.728c.08.078.149.163.205.254h4.277a1.32 1.32 0 01.205-.254l2.828-2.728a1.31 1.31 0 011.818 1.884L17.82 4.66h.848A5.333 5.333 0 0124 9.992v7.34a5.333 5.333 0 01-5.333 5.334H5.333A5.333 5.333 0 010 17.333V9.992a5.333 5.333 0 015.333-5.333h.781L4.977 3.56zm.356 3.67a2.667 2.667 0 00-2.666 2.667v7.529a2.667 2.667 0 002.666 2.666h13.334a2.667 2.667 0 002.666-2.666v-7.53a2.667 2.667 0 00-2.666-2.666H5.333zm1.334 5.192a1.333 1.333 0 112.666 0v1.192a1.333 1.333 0 11-2.666 0v-1.192zM16 11.09c-.736 0-1.333.597-1.333 1.333v1.192a1.333 1.333 0 102.666 0v-1.192c0-.736-.597-1.333-1.333-1.333z"/>
+                            </svg>
+                        </div>
+                        <div><a href="https://space.bilibili.com/401682702" target="_blank" style="text-decoration: none; color: inherit;">Hawaiipotato的个人空间</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 合作网站模块 -->
+    <section class="section" id="partners">
+        <div class="container">
+            <h2 class="section-title">合作伙伴</h2>
+            <div class="partners-grid">
+                <!-- 合作网站示例 1 -->
+                <div class="partner-card">
+                    <div class="partner-logo" style="background-image: url('https://example.com/partner1.jpg');"></div>
+                    <h3 class="partner-name">合作网站 1</h3>
+                    <p class="partner-description">这是合作网站的简短描述。您可以在这里介绍该网站的主要功能和服务。</p>
+                    <a href="#" class="partner-link" target="_blank">访问网站</a>
+                </div>
+
+                <!-- 合作网站示例 2 -->
+                <div class="partner-card">
+                    <div class="partner-logo" style="background-image: url('https://example.com/partner2.jpg');"></div>
+                    <h3 class="partner-name">合作网站 2</h3>
+                    <p class="partner-description">这是另一个合作网站的描述信息。可以说明你们之间的合作关系和价值。</p>
+                    <a href="#" class="partner-link" target="_blank">访问网站</a>
+                </div>
+
+                <!-- 合作网站示例 3 -->
+                <div class="partner-card">
+                    <div class="partner-logo" style="background-image: url('https://example.com/partner3.jpg');"></div>
+                    <h3 class="partner-name">合作网站 3</h3>
+                    <p class="partner-description">第三个合作伙伴的简介。可以包括其特色服务或者合作项目等内容。</p>
+                    <a href="#" class="partner-link" target="_blank">访问网站</a>
+                </div>
+
+                <!-- 复制此模块以添加更多合作网站 -->
+                <!-- 
+                <div class="partner-card">
+                    <div class="partner-logo" style="background-image: url('图标URL');">Logo</div>
+                    <h3 class="partner-name">新合作网站</h3>
+                    <p class="partner-description">新合作网站的描述内容。</p>
+                    <a href="#" class="partner-link" target="_blank">访问网站</a>
+                </div>
+                -->
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // 导航栏滚动效果
+        let lastScrollTop = 0;
+        const navbar = document.getElementById("navbar");
+        let isScrolling = false;
+        
+        window.addEventListener("scroll", function() {
+            // 如果正在滚动到锚点，则不执行导航栏隐藏逻辑
+            if (isScrolling) return;
+            
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop > lastScrollTop) {
+                // 向下滚动，隐藏导航栏（向下收起）
+                navbar.style.transform = "translateY(-100%)";
+            } else {
+                // 向上滚动，显示导航栏（向上展开）
+                navbar.style.transform = "translateY(0)";
+            }
+            
+            lastScrollTop = scrollTop;
+        });
+        
+        // 监听锚点链接点击事件
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                // 设置标志位，防止滚动时导航栏隐藏
+                isScrolling = true;
+                
+                // 延迟重置标志位
+                setTimeout(() => {
+                    isScrolling = false;
+                }, 1000); // 1秒后重置，足够完成滚动动画
+            });
+        });
+    </script>
+</body>
+</html>
