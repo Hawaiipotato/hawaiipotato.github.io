@@ -576,9 +576,28 @@ header p {
 
 .partner-name {
     font-size: 1.4rem;
-    margin-bottom: 12px;
+    margin-bottom: 8px;
     color: var(--text-primary);
     font-weight: 600;
+}
+
+.partner-label {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 500;
+    padding: 4px 12px;
+    margin: 0 4px 12px 4px;
+    background: var(--accent-gradient);
+    color: white;
+    border-radius: var(--radius-xl);
+    letter-spacing: 1px;
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition-fast);
+}
+
+.partner-card:hover .partner-label {
+    transform: scale(1.05);
+    box-shadow: var(--shadow-glow);
 }
 
 .partner-description {
