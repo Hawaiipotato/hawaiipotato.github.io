@@ -93,9 +93,9 @@ function generatePostHtml(post, mdContent) {
         <a href="/" class="nav-brand">土豆的小站</a>
         <div class="nav-center">
             <a href="/" class="nav-link">首页</a>
-            <a href="/#about" class="nav-link">关于我</a>
+            <a href="/about" class="nav-link">关于我</a>
             <a href="/blog/" class="nav-link active">博客</a>
-            <a href="/#partner" class="nav-link">合作伙伴</a>
+            <a href="/partner" class="nav-link">合作伙伴</a>
         </div>
         <div class="nav-right">
             <button class="theme-toggle" id="themeToggle" aria-label="切换主题">
@@ -149,8 +149,9 @@ function generatePostHtml(post, mdContent) {
                     <h4>快速链接</h4>
                     <ul>
                         <li><a href="/">首页</a></li>
+                        <li><a href="/about">关于我</a></li>
                         <li><a href="/blog/">博客</a></li>
-                        <li><a href="/#about">关于我</a></li>
+                        <li><a href="/partner">合作伙伴</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
@@ -234,7 +235,7 @@ function generatePostHtml(post, mdContent) {
                 let navHtml = '<div class="post-nav-inner">';
                 
                 if (prevPost) {
-                    navHtml += '<a href="/blog/post/' + prevPost.id + '/" class="post-nav-link">' +
+                    navHtml += '<a href="/blog/post/' + prevPost.id + '.html" class="post-nav-link">' +
                         '<span class="post-nav-label">← 上一篇</span>' +
                         '<span class="post-nav-title">' + escapeHtml(prevPost.title) + '</span></a>';
                 } else {
@@ -242,7 +243,7 @@ function generatePostHtml(post, mdContent) {
                 }
                 
                 if (nextPost) {
-                    navHtml += '<a href="/blog/post/' + nextPost.id + '/" class="post-nav-link post-nav-next">' +
+                    navHtml += '<a href="/blog/post/' + nextPost.id + '.html" class="post-nav-link post-nav-next">' +
                         '<span class="post-nav-label">下一篇 →</span>' +
                         '<span class="post-nav-title">' + escapeHtml(nextPost.title) + '</span></a>';
                 }
@@ -321,13 +322,10 @@ async function build() {
         
         posts.push(post);
         
-        const postDir = path.join(OUTPUT_DIR, post.id);
-        await fs.ensureDir(postDir);
-        
         const htmlContent = generatePostHtml(post, body);
-        await fs.writeFile(path.join(postDir, 'index.html'), htmlContent, 'utf8');
+        await fs.writeFile(path.join(OUTPUT_DIR, post.id + '.html'), htmlContent, 'utf8');
         
-        console.log(`生成: /blog/post/${post.id}/ (${post.title})`);
+        console.log(`生成: /blog/post/${post.id}.html (${post.title})`);
     }
     
     posts.sort((a, b) => new Date(b.date) - new Date(a.date));

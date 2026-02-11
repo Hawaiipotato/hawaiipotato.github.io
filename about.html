@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>关于我 - 土豆的小站</title>
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/style.css">
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('theme');
+            const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const theme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
+</head>
+<body>
+    <nav class="top-nav">
+        <a href="/" class="nav-brand">土豆的小站</a>
+        <div class="nav-center">
+            <a href="/" class="nav-link">首页</a>
+            <a href="/about" class="nav-link active">关于我</a>
+            <a href="/blog/" class="nav-link">博客</a>
+            <a href="/partner" class="nav-link">合作伙伴</a>
+        </div>
+        <div class="nav-right">
+            <button class="theme-toggle" id="themeToggle" aria-label="切换主题">
+                <svg class="theme-icon sun" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="5"/>
+                    <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="2" fill="none"/>
+                </svg>
+                <div class="theme-slider"></div>
+                <svg class="theme-icon moon" viewBox="0 0 24 24">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                </svg>
+            </button>
+            <a href="https://github.com/Hawaiipotato" target="_blank" class="github-link" aria-label="GitHub">
+                <svg viewBox="0 0 16 16" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+                </svg>
+            </a>
+        </div>
+    </nav>
+
+    <main class="main-content page-content">
+        <div class="container" style="padding: 100px 20px 60px;">
+            <div class="profile-main">
+                <div class="profile-sidebar">
+                    <div class="bio-image-placeholder"></div>
+                    <h2 class="profile-name">Potato</h2>
+                    <div class="profile-title">开发者 & 技术爱好者</div>
+                </div>
+                <div class="profile-content">
+                    <div class="profile-section">
+                        <h3>个人简介</h3>
+                        <p>你好！我是夏威夷土豆，一名热爱技术与创新的专业人士。我对编程和技术创新充满热情，并在该领域积累了丰富的经验。</p>
+                        <p>在我的职业生涯中，我一直致力于通过技术解决实际问题，通过不断学习和实践来提升自己的技能。</p>
+                        <p>我相信持续学习和团队协作的力量，喜欢接受挑战并寻找创新的解决方案。业余时间，我喜欢探索新技术、参与开源项目以及在技术社区中与其他开发者交流。</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="profile-section">
+                <h3>技能特长</h3>
+                <div class="skills-container">
+                    <div class="skill-category card">
+                        <h4>前端技术</h4>
+                        <p>HTML, CSS, JavaScript</p>
+                    </div>
+                    <div class="skill-category card">
+                        <h4>后端技术</h4>
+                        <p>C/C++, Python, Java, simple SQL</p>
+                    </div>
+                    <div class="skill-category card">
+                        <h4>其他技能</h4>
+                        <p>Git, Windows Debugging</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="profile-section">
+                <h3>兴趣爱好</h3>
+                <div class="interests-container">
+                    <div class="interest-item">修机 修机 还是TMD修机</div>
+                    <div class="interest-item">狠狠鞭策小AI给我干活</div>
+                    <div class="interest-item">编一点奇奇怪怪的小script</div>
+                    <div class="interest-item">捯饬玩转电脑的各种奇淫妙计</div>
+                    <div class="interest-item">读点好书 看点美景</div>
+                    <div class="interest-item">看犯罪动作片然后豆瓣开喷</div>
+                </div>
+            </div>
+            
+            <div class="profile-section">
+                <h3>联系方式</h3>
+                <div class="contact-container">
+                    <a href="mailto:hawaiipotatoes@gmail.com" class="contact-item">
+                        <div class="contact-icon">
+                            <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <title>Email</title>
+                                <path d="M12 .02c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm6.99 6.98l-6.99 5.666-6.991-5.666h13.981zm.01 10h-14v-8.505l7 5.673 7-5.672v8.504z"/>
+                            </svg>
+                        </div>
+                        <div>hawaiipotatoes@gmail.com</div>
+                    </a>
+                    <a href="https://github.com/Hawaiipotato" target="_blank" class="contact-item">
+                        <div class="contact-icon">
+                            <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <title>GitHub</title>
+                                <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+                            </svg>
+                        </div>
+                        <div>@Hawaiipotato</div>
+                    </a>
+                    <a href="https://space.bilibili.com/401682702" target="_blank" class="contact-item">
+                        <div class="contact-icon">
+                            <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <title>Bilibili</title>
+                                <path d="M17.813 4.653h.854c1.51.054 2.769.578 3.773 1.574 1.004.995 1.524 2.249 1.56 3.76v7.36c-.036 1.51-.556 2.769-1.56 3.773s-2.262 1.524-3.773 1.56H5.333c-1.51-.036-2.769-.556-3.773-1.56S.036 18.858 0 17.347v-7.36c.036-1.511.556-2.765 1.56-3.76 1.004-.996 2.262-1.52 3.773-1.574h.774l-1.174-1.12a1.234 1.234 0 0 1-.373-.906c0-.356.124-.659.373-.907l.027-.027c.267-.249.573-.373.92-.373.347 0 .653.124.92.373L9.653 4.44c.071.071.134.142.187.213h4.267a.836.836 0 0 1 .16-.213l2.853-2.747c.267-.249.573-.373.92-.373.347 0 .662.151.929.4.267.249.391.551.391.907 0 .355-.124.657-.373.906zM5.333 7.24c-.746.018-1.373.276-1.88.773-.506.498-.769 1.13-.786 1.894v7.52c.017.764.28 1.395.786 1.893.507.498 1.134.756 1.88.773h13.334c.746-.017 1.373-.275 1.88-.773.506-.498.769-1.129.786-1.893v-7.52c-.017-.765-.28-1.396-.786-1.894-.507-.497-1.134-.755-1.88-.773zM8 11.107c.373 0 .684.124.933.373.25.249.383.569.4.96v1.173c-.017.391-.15.711-.4.96-.249.25-.56.374-.933.374s-.684-.125-.933-.374c-.25-.249-.383-.569-.4-.96V12.44c.017-.391.15-.711.4-.96.249-.249.56-.373.933-.373zm8 0c.373 0 .684.124.933.373.25.249.383.569.4.96v1.173c-.017.391-.15.711-.4.96-.249.25-.56.374-.933.374s-.684-.125-.933-.374c-.25-.249-.383-.569-.4-.96V12.44c.017-.391.15-.711.4-.96.249-.249.56-.373.933-.373z"/>
+                            </svg>
+                        </div>
+                        <div>Hawaiipotato的个人空间</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>土豆的小站</h4>
+                    <p>一个开发者的个人空间，记录技术与生活的点滴。</p>
+                </div>
+                <div class="footer-section">
+                    <h4>快速链接</h4>
+                    <ul>
+                        <li><a href="/">首页</a></li>
+                        <li><a href="/about">关于我</a></li>
+                        <li><a href="/blog/">博客</a></li>
+                        <li><a href="/partner">合作伙伴</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>联系方式</h4>
+                    <ul>
+                        <li><a href="https://github.com/Hawaiipotato" target="_blank">GitHub</a></li>
+                        <li><a href="mailto:hawaiipotatoes@gmail.com">邮箱</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 土豆的小站 · Made with ❤️ · All rights reserved</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        (function() {
+            const themeToggle = document.getElementById('themeToggle');
+            const html = document.documentElement;
+            
+            themeToggle.addEventListener('click', function() {
+                const currentTheme = html.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                html.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+            });
+        })();
+    </script>
+</body>
+</html>

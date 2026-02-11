@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>欢迎来到我的博客 - 土豆的小站</title>
+    <title>uv：Python项目环境管理神器 - 土豆的小站</title>
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/blog/css/blog.css">
@@ -26,9 +26,9 @@
         <a href="/" class="nav-brand">土豆的小站</a>
         <div class="nav-center">
             <a href="/" class="nav-link">首页</a>
-            <a href="/#about" class="nav-link">关于我</a>
+            <a href="/about" class="nav-link">关于我</a>
             <a href="/blog/" class="nav-link active">博客</a>
-            <a href="/#partner" class="nav-link">合作伙伴</a>
+            <a href="/partner" class="nav-link">合作伙伴</a>
         </div>
         <div class="nav-right">
             <button class="theme-toggle" id="themeToggle" aria-label="切换主题">
@@ -54,12 +54,12 @@
     <main class="post-page">
         <div class="post-wrapper">
             <div class="post-card">
-                <h1 class="post-title">欢迎来到我的博客</h1>
+                <h1 class="post-title">uv：Python项目环境管理神器</h1>
                 <div class="post-meta">
-                    <span class="post-date">2026.02.11</span>
-                    <span class="post-author">Potato</span>
+                    <span class="post-date">2026.02.10</span>
+                    <span class="post-author">土豆</span>
                 </div>
-                <div class="post-tags"><span class="post-tag">随笔</span><span class="post-tag">博客</span></div>
+                <div class="post-tags"><span class="post-tag">uv</span><span class="post-tag">Python</span></div>
             </div>
             
             <div class="post-content markdown-body" id="postContent"></div>
@@ -82,8 +82,9 @@
                     <h4>快速链接</h4>
                     <ul>
                         <li><a href="/">首页</a></li>
+                        <li><a href="/about">关于我</a></li>
                         <li><a href="/blog/">博客</a></li>
-                        <li><a href="/#about">关于我</a></li>
+                        <li><a href="/partner">合作伙伴</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
@@ -145,7 +146,7 @@
         });
 
         // 渲染 Markdown
-        const mdContent = "\n\n> 这是我用纯前端技术搭建的个人博客，支持 Markdown 写作。\n\n## 为什么要写博客？\n\n写博客是一个很好的习惯，它可以帮助我：\n\n- **整理思路** - 把学到的知识用自己的话写出来\n- **记录成长** - 回头看自己之前的文章，能看到进步\n- **分享交流** - 也许能帮助到其他人\n\n## 这个博客的技术栈\n\n这个博客完全基于静态文件，使用以下技术：\n\n1. **HTML/CSS/JavaScript** - 纯原生实现\n2. **Marked.js** - 用于 Markdown 渲染\n3. **Highlight.js** - 代码高亮\n4. **GitHub Pages** - 免费托管\n\n## 未来的计划\n\n接下来我打算写这些主题：\n\n- Python 爬虫实战\n- Windows 调试技巧\n- 一些有趣的小脚本\n\n希望这个博客能持续更新下去！\n\n---\n\n*最后更新：2026年2月11日*\n";
+        const mdContent = "\n你有没有数过，为了跑通一个从 GitHub clone 下来的小项目，自己在\"配置环境\"这件事上浪费过多少个小时？\n\n我记得最崩溃的一次，是一个周末下午。我兴冲冲地想试一个数据分析的小工具，结果从三点折腾到晚饭时间，Python 版本不对、`pip install` 报依赖冲突、好不容易装上的包又和系统自带的冲突……最后代码终于跑起来了，但我已经忘了当初想用它做什么。\n\n以前高中那会搞信息会考用 Python 跑的都是简单得不能再简单的 First Things First，靠 CPython 自带的 `pip` 足以解决所有问题，但现在遇到的项目动不动就是十几个不同要求不同交叉依赖树的依赖，靠传统的工具链实在难以为继，于是我开始找起各种包管理方案。\n\n---\n\n## 1.Why uv\n\n在用 uv 前，我也不是没有试过学习 Python 自带的工具：`venv` 管虚拟环境、`pip` 管装包；后来又找了一些第三方工具：`pipx` 管全局工具、`pyenv` 管多版本……每个工具单独看都还好，凑在一起就让我一个头两个大。\n\n然后我也尝试了 conda，各种东西确实都集成完了，功能也确实够强大了，还能直接上手做 Machine Learning，但那个硕大无朋的体积，总让我隐隐想起气科学妹那台C盘红红的 Dell Inspiron。\n\n后来在试用 uv 一个下午之后，我默默地把电脑里的裸 Python 和 Miniconda 都卸了。\n\n选择 uv 的原因实在很简单：Rust 够快、功能够全、lock/sync完备。这个由 Astral 团队出品的全能 Python 项目管理工具，用一个工具集成了过去 `pip` / `venv` / `pipx` / `pyenv` 的全部功能，兼容过去 pip/conda 指令的 `requirements.txt` 同时，还加入了独创性的`uv lock` / `uv sync`机制，实在是很诱人，最后我还是倒戈了。\n\n## 2.安装uv\n\nWindows 下使用一条 PowerShell 命令：\n\n```powershell\nirm https://astral.sh/uv/install.ps1 | iex\n```\n\n或者 MacOS/Linux 使用一条 Shell 通用指令：\n\n```shell\ncurl -LsSf https://astral.sh/uv/install.sh | sh\n```\n\n装好之后，首先解决 Python 版本的问题。uv 可以像 pyenv 一样管理多版本：\n\n```shell\nuv python list\nuv python install 3.11.13\n```\n\n有了 Python，就可以开始创建项目了。`uv init` 会生成一个 `pyproject.toml`，然后 `uv venv` 创建虚拟环境：\n\n```shell\nuv init my-project\ncd my-project\nuv venv --python 3.11.13\n```\n\n> 实际上，由于我们预先有安装 uv 内的 py 版本，所以 uv init 默认使用的是 uv 内仅有读到的这个版本值，venv 同理，加上 `--python 3.11.13` 只是保险措施\n>\n> 以及，你也可以自定义虚拟环境的名字，比如给它起名为 myenv：`uv venv myenv [--python 3.11.13]`\n\n这和传统的 `python -m venv` 类似，但 uv 创建环境的速度明显更快——几乎感觉不到等待。\n\n**激活环境**的方式和传统 venv 相同，但需要注意平台差异：\n\n- **Windows (PowerShell)**：`.venv\\Scripts\\Activate.ps1`\n- **Windows (CMD)**：`.venv\\Scripts\\activate.bat`\n- **macOS/Linux**：`source .venv/bin/activate`\n\n> **Windows 用户注意**：PowerShell 默认可能不允许运行脚本。如遇激活失败，可运行 `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser` 解决，或改用 CMD 运行 `activate.bat`。\n\n## 3.环境锁定与同步\n\nuv 最具独创性的还得是它的锁定机制。传统 `requirements.txt` 记录的是直接依赖，但间接依赖的版本往往是模糊的。`uv lock` 会生成一个 `uv.lock` 文件，精确锁定每一个包的版本和哈希值：\n\n```shell\nuv lock\n```\n\n团队协作时，只需共享源码和 `uv.lock`，对方运行 `uv sync` 就能得到完全一致的环境：\n\n```shell\nuv sync\n```\n\n这让我彻底告别了\"在我电脑上能跑\"的尴尬。删除 `.venv` 后重建环境，或者在新机器上部署，都是一条命令的事。\n\n## 4.包管理\n\n安装依赖时，uv 提供了两种方式：`uv add/rm` 和 `uv pip`\n\n`uv add` 会把包依赖写入 `pyproject.toml`，这是项目依赖的正规军（相应的 `uv remove` / `uv rm` 会把包依赖从 `pyproject.toml` 中去掉）：\n\n```shell\nuv add rich\nuv remove rich\n```\n\n`uv pip install` 与 pip 效果完全一致——正常存入venv中使用，但是不会写入 `pyproject.toml`：\n\n```shell\nuv pip install testpack\nuv pip uninstall testpack\n```\n\n格式和传统 pip 基本一致，但速度要快得多——特别是装一些有编译依赖的包时，这种差距尤为明显。\n\n## 5.全局工具管理\n\n除了项目环境，uv 也能管理全局 CLI 工具，替代 pipx 的角色。例如我个人比较喜欢的 Python linter —— `ruff`（同样是 Astral 出品）：\n\n```shell\nuv tool install ruff\n```\n\n装完之后 `ruff` 全局可用，与项目环境完全隔离。`uv tool list` 查看已安装的工具，`uv tool uninstall` 卸载。\n\n---\n\n## 6.实战：一个简单项目\n\n我们来做一个极简的问候小脚本——输入名字，输出带彩色边框的问候语，用到 rich 库。\n\n先准备 Python：\n\n```shell\nuv python install 3.11.13\n```\n\n初始化项目：\n\n```shell\nuv init greeting-cli && cd greeting-cli\nuv venv --python 3.11.13\n```\n\n按需激活环境（或者用 `uv run` 跳过这一步）：\n\n```powershell\n.venv\\Scripts\\Activate.ps1\n```\n\n添加依赖：\n\n```shell\nuv add rich\n```\n\n写代码，`main.py`：\n\n```python\nfrom rich.panel import Panel\nfrom rich import print\n\nname = input(\"请输入你的名字：\")\nprint(Panel.fit(\n    f\"你好，{name}！欢迎探索 uv 的世界 ✨\",\n    title=\"问候\",\n    border_style=\"cyan\"\n))\n```\n\n运行：\n\n```shell\nuv run python main.py\n```\n\n最后锁定环境：\n\n```shell\nuv lock\n```\n\n---\n\n## 写在最后\n\n说实话，我已经不太记得上次手动激活 Python 虚拟环境是什么时候了。一方面确实，`uv run` 解决了我最烦的那一步，另一方面，现代IDE几乎都集成了自动 activate 的功能（即使没有自动 activate，我也可以在\"终端\"设置页的地址栏加上一串简单又重复的执行选项让终端启动时自动 activate）。而 `uv add` 和 `uv lock` 则是用最简单粗暴的方式，让我不用再操心任何依赖管理。\n\nAstral 团队似乎很擅长这个——用 Rust 把那些我们每天都在用、但用起来有点别扭的工具重写一遍，然后让它快一点、顺手一点、集成一点、优雅一点。uv 是这样，ruff 也是这样。\n\n如果你也受够了在终端里反复激活环境、或者看着 pip/conda 龟爬般的安装进度条、或是对着红红的C盘发呆，也许可以花一个下午试试 uv。最坏的结果，也就是再卸载掉而已。但大概率，你会像我一样，被它极致的技术优雅折服，然后默默地把其他环境管理工具都换成它。\n";
         marked.setOptions({ breaks: true, gfm: true, headerIds: true, mangle: false });
         document.getElementById('postContent').innerHTML = marked.parse(mdContent);
         document.querySelectorAll('pre code').forEach((block) => {
@@ -157,7 +158,7 @@
             .then(r => r.json())
             .then(data => {
                 const posts = data.posts.sort((a, b) => new Date(b.date) - new Date(a.date));
-                const currentId = '1';
+                const currentId = '3';
                 const currentIndex = posts.findIndex(p => p.id === currentId);
                 const prevPost = posts[currentIndex + 1];
                 const nextPost = posts[currentIndex - 1];
@@ -167,7 +168,7 @@
                 let navHtml = '<div class="post-nav-inner">';
                 
                 if (prevPost) {
-                    navHtml += '<a href="/blog/post/' + prevPost.id + '/" class="post-nav-link">' +
+                    navHtml += '<a href="/blog/post/' + prevPost.id + '.html" class="post-nav-link">' +
                         '<span class="post-nav-label">← 上一篇</span>' +
                         '<span class="post-nav-title">' + escapeHtml(prevPost.title) + '</span></a>';
                 } else {
@@ -175,7 +176,7 @@
                 }
                 
                 if (nextPost) {
-                    navHtml += '<a href="/blog/post/' + nextPost.id + '/" class="post-nav-link post-nav-next">' +
+                    navHtml += '<a href="/blog/post/' + nextPost.id + '.html" class="post-nav-link post-nav-next">' +
                         '<span class="post-nav-label">下一篇 →</span>' +
                         '<span class="post-nav-title">' + escapeHtml(nextPost.title) + '</span></a>';
                 }
