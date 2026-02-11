@@ -9,7 +9,7 @@ const fs = require('fs-extra');
 const path = require('path');
 
 const PROJECT_ROOT = __dirname;
-const POSTS_DIR = path.join(PROJECT_ROOT, 'blog', 'posts');
+const POSTS_DIR = path.join(PROJECT_ROOT, 'blog', 'md');
 const OUTPUT_DIR = path.join(PROJECT_ROOT, 'blog', 'post');
 const DATA_DIR = path.join(PROJECT_ROOT, 'data');
 

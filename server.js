@@ -14,7 +14,7 @@ const { execSync } = require('child_process');
 const app = express();
 const PORT = 3000;
 const PROJECT_ROOT = __dirname;
-const POSTS_DIR = path.join(PROJECT_ROOT, 'blog', 'posts');
+const POSTS_DIR = path.join(PROJECT_ROOT, 'blog', 'md');
 const POSTS_JSON_PATH = path.join(PROJECT_ROOT, 'data', 'posts.json');
 
 const AUTH_SALT = 'hawaii_potato_2024_salt';
@@ -118,7 +118,7 @@ ${content}`;
             success: true,
             message: '发布成功',
             files: {
-                md: `blog/posts/${mdFilename}`,
+                md: `blog/md/${mdFilename}`,
                 html: `blog/post/${id}/index.html`,
                 json: 'data/posts.json'
             }

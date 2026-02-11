@@ -43,7 +43,7 @@ npm start
 
 发布后的文件会自动保存到：
 
-- Markdown 文件: `blog/posts/[中文标题].md`
+- Markdown 文件: `blog/md/[中文标题].md`
 - 文章元数据: `data/posts.json`
 
 ## API 接口
@@ -60,12 +60,12 @@ GET /api/posts
 
 ### 发布/更新文章
 ```
-POST /api/posts
+POST /api/publish
 Content-Type: application/json
 
 {
   "id": "4",
-  "file": "wo-de-di-yi-pian-wen-zhang.md",
+  "filename": "wo-de-di-yi-pian-wen-zhang",
   "title": "我的第一篇文章",
   "date": "2026-02-11",
   "author": "Potato",
