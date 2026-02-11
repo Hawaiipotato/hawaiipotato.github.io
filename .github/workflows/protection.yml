@@ -69,7 +69,8 @@ jobs:
           )
 
           for file in "${CRITICAL_FILES[@]}"; do
-            if echo "$CHANGED_FILES" | grep -q "$file"; then
+            # Use grep with beginning anchor to avoid false positives
+            if echo "$CHANGED_FILES" | grep -q "^$file\|/$file"; then
               echo "::warning::Critical file modified: $file"
             fi
           done

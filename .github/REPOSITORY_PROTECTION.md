@@ -47,8 +47,8 @@ To prevent others from pushing to your repository, you need to configure the fol
    - ✅ **Include administrators** (protects against accidental self-pushes)
    - ✅ **Restrict who can push to matching branches**
      - Add yourself (@Hawaiipotato) as the only allowed pusher
-   - ✅ **Allow force pushes** - **DISABLE** this (uncheck)
-   - ✅ **Allow deletions** - **DISABLE** this (uncheck)
+   - ❌ **Allow force pushes** - **DISABLE** this (uncheck)
+   - ❌ **Allow deletions** - **DISABLE** this (uncheck)
 5. Click **Create** or **Save changes**
 
 ### Step 3: Configure CODEOWNERS Protection
