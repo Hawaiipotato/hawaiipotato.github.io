@@ -1,0 +1,12 @@
+# CODEOWNERS file
+# This file designates who owns the code in this repository
+# All changes require approval from the repository owner
+
+# Owner of all files in the repository
+* @Hawaiipotato
+
+# Specific important files
+/index.html @Hawaiipotato
+/package.json @Hawaiipotato
+/server.js @Hawaiipotato
+/.github/ @Hawaiipotato

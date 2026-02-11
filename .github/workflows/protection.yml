@@ -1,0 +1,65 @@
+name: Repository Protection Check
+
+# This workflow helps enforce repository protection policies
+on:
+  pull_request:
+    branches: [ main, master ]
+  push:
+    branches: [ main, master ]
+
+jobs:
+  validate-push:
+    runs-on: ubuntu-latest
+    name: Validate Repository Changes
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      
+      - name: Check for unauthorized changes
+        run: |
+          echo "::notice::Validating repository changes"
+          
+          # Get the actor (person who triggered this workflow)
+          ACTOR="${{ github.actor }}"
+          OWNER="Hawaiipotato"
+          
+          echo "Actor: $ACTOR"
+          echo "Owner: $OWNER"
+          
+          # Check if the actor is the repository owner
+          if [ "$ACTOR" != "$OWNER" ]; then
+            echo "::warning::Changes are being made by someone other than the repository owner ($OWNER)"
+            echo "::warning::Please ensure proper authorization before merging"
+            
+            # In a real scenario, you might want to fail here:
+            # echo "::error::Unauthorized push detected"
+            # exit 1
+          else
+            echo "::notice::Changes are from the repository owner - authorized"
+          fi
+      
+      - name: Validate critical files
+        run: |
+          echo "::notice::Checking for changes to critical files"
+          
+          # List changed files
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            CHANGED_FILES=$(git diff --name-only ${{ github.event.pull_request.base.sha }} ${{ github.sha }})
+          else
+            CHANGED_FILES=$(git diff --name-only HEAD^ HEAD || echo "")
+          fi
+          
+          echo "Changed files:"
+          echo "$CHANGED_FILES"
+          
+          # Check for changes to critical files
+          CRITICAL_FILES=".github/CODEOWNERS .github/workflows package.json server.js index.html"
+          
+          for file in $CRITICAL_FILES; do
+            if echo "$CHANGED_FILES" | grep -q "^$file"; then
+              echo "::warning::Critical file modified: $file"
+            fi
+          done
