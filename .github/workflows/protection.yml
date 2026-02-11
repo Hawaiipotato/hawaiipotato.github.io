@@ -60,11 +60,16 @@ jobs:
           echo "$CHANGED_FILES"
 
           # Check for changes to critical files
-          CRITICAL=".github/CODEOWNERS .github/workflows"
-          CRITICAL="$CRITICAL package.json server.js index.html"
+          CRITICAL_FILES=(
+            ".github/CODEOWNERS"
+            ".github/workflows"
+            "package.json"
+            "server.js"
+            "index.html"
+          )
 
-          for file in $CRITICAL; do
-            if echo "$CHANGED_FILES" | grep -q "^$file"; then
+          for file in "${CRITICAL_FILES[@]}"; do
+            if echo "$CHANGED_FILES" | grep -q "$file"; then
               echo "::warning::Critical file modified: $file"
             fi
           done
