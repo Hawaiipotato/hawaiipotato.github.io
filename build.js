@@ -134,7 +134,7 @@ function generatePostHtml(post, mdContent) {
             <div class="post-nav" id="postNav"></div>
             
             <!-- Giscus 评论区 -->
-            <div class="giscus-container" id="giscusContainer"></div>
+            <div class="giscus-container" id="giscus-container"></div>
         </div>
     </main>
 
@@ -184,8 +184,9 @@ function generatePostHtml(post, mdContent) {
                 const isDark = html.getAttribute('data-theme') === 'dark';
                 const iframe = document.querySelector('iframe.giscus-frame');
                 if (iframe) {
+                    const theme = isDark ? 'dark_dimmed' : 'light';
                     iframe.contentWindow.postMessage(
-                        { giscus: { setConfig: { theme: isDark ? 'dark' : 'light' } } },
+                        { giscus: { setConfig: { theme: theme } } },
                         'https://giscus.app'
                     );
                 }
@@ -261,7 +262,7 @@ function generatePostHtml(post, mdContent) {
             const savedTheme = localStorage.getItem('theme');
             const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
             const theme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
-            const giscusTheme = theme === 'dark' ? 'dark' : 'light';
+            const giscusTheme = theme === 'dark' ? 'dark_dimmed' : 'light';
             
             const script = document.createElement('script');
             script.src = 'https://giscus.app/client.js';
@@ -278,7 +279,7 @@ function generatePostHtml(post, mdContent) {
             script.setAttribute('data-lang', 'zh-CN');
             script.setAttribute('crossorigin', 'anonymous');
             script.async = true;
-            document.getElementById('giscusContainer').appendChild(script);
+            document.getElementById('giscus-container').appendChild(script);
         })();
     </script>
 </body>

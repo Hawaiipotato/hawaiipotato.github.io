@@ -67,23 +67,7 @@
             <div class="post-nav" id="postNav"></div>
             
             <!-- Giscus 评论区 -->
-            <div class="giscus-container">
-                <script src="https://giscus.app/client.js"
-                    data-repo="Hawaiipotato/hawaiipotato.github.io"
-                    data-repo-id="R_kgDOOI58bA"
-                    data-category="Announcements"
-                    data-category-id="DIC_kwDOOI58bM4C2MS1"
-                    data-mapping="pathname"
-                    data-strict="0"
-                    data-reactions-enabled="1"
-                    data-emit-metadata="0"
-                    data-input-position="top"
-                    data-theme="preferred_color_scheme"
-                    data-lang="zh-CN"
-                    crossorigin="anonymous"
-                    async>
-                </script>
-            </div>
+            <div class="giscus-container" id="giscus-container"></div>
         </div>
     </main>
 
@@ -129,6 +113,18 @@
                 hljsDark.disabled = !isDark;
             }
             
+            function updateGiscusTheme() {
+                const isDark = html.getAttribute('data-theme') === 'dark';
+                const iframe = document.querySelector('iframe.giscus-frame');
+                if (iframe) {
+                    const theme = isDark ? 'dark_dimmed' : 'light';
+                    iframe.contentWindow.postMessage(
+                        { giscus: { setConfig: { theme: theme } } },
+                        'https://giscus.app'
+                    );
+                }
+            }
+            
             updateHighlightTheme();
             
             themeToggle.addEventListener('click', function() {
@@ -137,6 +133,7 @@
                 html.setAttribute('data-theme', newTheme);
                 localStorage.setItem('theme', newTheme);
                 updateHighlightTheme();
+                updateGiscusTheme();
             });
         })();
 
@@ -148,7 +145,7 @@
         });
 
         // 渲染 Markdown
-        const mdContent = "\n> 这是我用纯前端技术搭建的个人博客，支持 Markdown 写作。\n\n## 为什么要写博客？\n\n写博客是一个很好的习惯，它可以帮助我：\n\n- **整理思路** - 把学到的知识用自己的话写出来\n- **记录成长** - 回头看自己之前的文章，能看到进步\n- **分享交流** - 也许能帮助到其他人\n\n## 这个博客的技术栈\n\n这个博客完全基于静态文件，使用以下技术：\n\n1. **HTML/CSS/JavaScript** - 纯原生实现\n2. **Marked.js** - 用于 Markdown 渲染\n3. **Highlight.js** - 代码高亮\n4. **GitHub Pages** - 免费托管\n\n## 写作流程\n\n发布一篇新文章只需要两步：\n\n### 第一步：编写 Markdown 文件\n\n把写好的 `.md` 文件放到 `blog/posts/` 目录下，文件名和文章 ID 对应。\n\n### 第二步：更新元数据\n\n在 `data/posts.json` 中添加文章信息：\n\n```json\n{\n  \"id\": \"文章ID\",\n  \"title\": \"文章标题\",\n  \"date\": \"2026-02-11\",\n  \"author\": \"作者名\",\n  \"tags\": [\"标签1\", \"标签2\"],\n  \"summary\": \"文章摘要\"\n}\n```\n\n## 未来的计划\n\n接下来我打算写这些主题：\n\n- Python 爬虫实战\n- Windows 调试技巧\n- 一些有趣的小脚本\n\n希望这个博客能持续更新下去！\n\n---\n\n*最后更新：2026年2月11日*\n";
+        const mdContent = "\n\n> 这是我用纯前端技术搭建的个人博客，支持 Markdown 写作。\n\n## 为什么要写博客？\n\n写博客是一个很好的习惯，它可以帮助我：\n\n- **整理思路** - 把学到的知识用自己的话写出来\n- **记录成长** - 回头看自己之前的文章，能看到进步\n- **分享交流** - 也许能帮助到其他人\n\n## 这个博客的技术栈\n\n这个博客完全基于静态文件，使用以下技术：\n\n1. **HTML/CSS/JavaScript** - 纯原生实现\n2. **Marked.js** - 用于 Markdown 渲染\n3. **Highlight.js** - 代码高亮\n4. **GitHub Pages** - 免费托管\n\n## 未来的计划\n\n接下来我打算写这些主题：\n\n- Python 爬虫实战\n- Windows 调试技巧\n- 一些有趣的小脚本\n\n希望这个博客能持续更新下去！\n\n---\n\n*最后更新：2026年2月11日*\n";
         marked.setOptions({ breaks: true, gfm: true, headerIds: true, mangle: false });
         document.getElementById('postContent').innerHTML = marked.parse(mdContent);
         document.querySelectorAll('pre code').forEach((block) => {
@@ -192,6 +189,31 @@
             div.textContent = str;
             return div.innerHTML;
         }
+
+        // 动态加载 giscus
+        (function() {
+            const savedTheme = localStorage.getItem('theme');
+            const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const theme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
+            const giscusTheme = theme === 'dark' ? 'dark_dimmed' : 'light';
+            
+            const script = document.createElement('script');
+            script.src = 'https://giscus.app/client.js';
+            script.setAttribute('data-repo', 'Hawaiipotato/hawaiipotato.github.io');
+            script.setAttribute('data-repo-id', 'R_kgDOOI58bA');
+            script.setAttribute('data-category', 'Announcements');
+            script.setAttribute('data-category-id', 'DIC_kwDOOI58bM4C2MS1');
+            script.setAttribute('data-mapping', 'pathname');
+            script.setAttribute('data-strict', '0');
+            script.setAttribute('data-reactions-enabled', '1');
+            script.setAttribute('data-emit-metadata', '0');
+            script.setAttribute('data-input-position', 'top');
+            script.setAttribute('data-theme', giscusTheme);
+            script.setAttribute('data-lang', 'zh-CN');
+            script.setAttribute('crossorigin', 'anonymous');
+            script.async = true;
+            document.getElementById('giscus-container').appendChild(script);
+        })();
     </script>
 </body>
 </html>

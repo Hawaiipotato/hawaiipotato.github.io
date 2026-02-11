@@ -1,0 +1,105 @@
+/*! Giscus Light Theme - Potato Blog */
+main {
+  --color-prettylights-syntax-comment: #718096;
+  --color-prettylights-syntax-constant: #4A90D9;
+  --color-prettylights-syntax-entity: #667eea;
+  --color-prettylights-syntax-storage-modifier-import: #1a202c;
+  --color-prettylights-syntax-entity-tag: #4A90D9;
+  --color-prettylights-syntax-keyword: #667eea;
+  --color-prettylights-syntax-string: #059669;
+  --color-prettylights-syntax-variable: #d97706;
+  --color-prettylights-syntax-brackethighlighter-unmatched: #ef4444;
+  --color-prettylights-syntax-invalid-illegal-text: #1a202c;
+  --color-prettylights-syntax-invalid-illegal-bg: #fef2f2;
+  --color-prettylights-syntax-carriage-return-text: #1a202c;
+  --color-prettylights-syntax-carriage-return-bg: #fee2e2;
+  --color-prettylights-syntax-string-regexp: #059669;
+  --color-prettylights-syntax-markup-list: #d97706;
+  --color-prettylights-syntax-markup-heading: #4A90D9;
+  --color-prettylights-syntax-markup-italic: #1a202c;
+  --color-prettylights-syntax-markup-bold: #1a202c;
+  --color-prettylights-syntax-markup-deleted-text: #dc2626;
+  --color-prettylights-syntax-markup-deleted-bg: #fee2e2;
+  --color-prettylights-syntax-markup-inserted-text: #16a34a;
+  --color-prettylights-syntax-markup-inserted-bg: #dcfce7;
+  --color-prettylights-syntax-markup-changed-text: #d97706;
+  --color-prettylights-syntax-markup-changed-bg: #fef3c7;
+  --color-prettylights-syntax-markup-ignored-text: #1a202c;
+  --color-prettylights-syntax-markup-ignored-bg: #f0f5ff;
+  --color-prettylights-syntax-meta-diff-range: #667eea;
+  --color-prettylights-syntax-brackethighlighter-angle: #718096;
+  --color-prettylights-syntax-sublimelinter-gutter-mark: #a0aec0;
+  --color-prettylights-syntax-constant-other-reference-link: #4A90D9;
+  --color-btn-text: #1a202c;
+  --color-btn-bg: #ffffff;
+  --color-btn-border: #c7d8f0;
+  --color-btn-shadow: 0 0 transparent;
+  --color-btn-inset-shadow: 0 0 transparent;
+  --color-btn-hover-bg: #f8fbff;
+  --color-btn-hover-border: #4A90D9;
+  --color-btn-active-bg: #f0f5ff;
+  --color-btn-active-border: #4A90D9;
+  --color-btn-selected-bg: #ffffff;
+  --color-btn-primary-text: #ffffff;
+  --color-btn-primary-bg: #4A90D9;
+  --color-btn-primary-border: transparent;
+  --color-btn-primary-shadow: 0 4px 20px rgba(74, 144, 217, 0.15);
+  --color-btn-primary-inset-shadow: 0 0 transparent;
+  --color-btn-primary-hover-bg: #5a9de5;
+  --color-btn-primary-hover-border: transparent;
+  --color-btn-primary-selected-bg: #4A90D9;
+  --color-btn-primary-selected-shadow: 0 0 transparent;
+  --color-btn-primary-disabled-text: #8da6c8;
+  --color-btn-primary-disabled-bg: #9dc1e8;
+  --color-btn-primary-disabled-border: transparent;
+  --color-action-list-item-default-hover-bg: #e8f0fc;
+  --color-segmented-control-bg: #dbe8f8;
+  --color-segmented-control-button-bg: #ffffff;
+  --color-segmented-control-button-selected-border: #4A90D9;
+  --color-fg-default: #1a202c;
+  --color-fg-muted: #4a5568;
+  --color-fg-subtle: #718096;
+  --color-canvas-default: #f0f5ff;
+  --color-canvas-overlay: #ffffff;
+  --color-canvas-inset: #f0f5ff;
+  --color-canvas-subtle: #ffffff;
+  --color-border-default: #c7d8f0;
+  --color-border-muted: #dbe8f8;
+  --color-neutral-muted: #e8f0fc;
+  --color-accent-fg: #4A90D9;
+  --color-accent-emphasis: #4A90D9;
+  --color-accent-muted: #c7d8f0;
+  --color-accent-subtle: #e8f0fc;
+  --color-success-fg: #16a34a;
+  --color-attention-fg: #d97706;
+  --color-attention-muted: #fde68a;
+  --color-attention-subtle: #fef3c7;
+  --color-danger-fg: #dc2626;
+  --color-danger-muted: #fecaca;
+  --color-danger-subtle: #fef2f2;
+  --color-primer-shadow-inset: 0 0 transparent;
+  --color-scale-gray-7: #ffffff;
+  --color-scale-blue-8: #4A90D9;
+  --color-social-reaction-bg-hover: #e8f0fc;
+  --color-social-reaction-bg-reacted-hover: #dbe8f8;
+}
+
+main .pagination-loader-container {
+  background-image: url("https://github.com/images/modules/pulls/progressive-disclosure-line.svg");
+}
+
+.gsc-homepage-bg {
+  background-color: #f0f5ff;
+}
+
+main .gsc-loading-image {
+  background-image: url("https://github.githubassets.com/images/mona-loading-default.gif");
+}
+
+.gsc-comment-box, .gsc-comment-editor {
+  border-radius: 16px !important;
+}
+
+.gsc-timeline {
+  border-radius: 16px !important;
+}
