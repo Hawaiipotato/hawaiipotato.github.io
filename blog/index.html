@@ -4,13 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>博客 - 土豆的小站</title>
-    <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="./css/blog.css">
-    <!-- 中文字体 - 使用可靠的霓装字体 -->
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/blog/css/blog.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/style.css">
     <style>
-        /* 全局移除所有链接下划线 */
         a, a:link, a:visited, a:hover, a:active {
             text-decoration: none;
         }
@@ -25,15 +23,14 @@
     </script>
 </head>
 <body>
-    <!-- 顶部导航栏 - 与主页一致 -->
     <nav class="top-nav">
-        <a href="../index.html" class="nav-brand">土豆的小站</a>
+        <a href="/" class="nav-brand">土豆的小站</a>
         
         <div class="nav-center">
-            <a href="../index.html" class="nav-link">首页</a>
-            <a href="../index.html##about" class="nav-link">关于我</a>
-            <a href="./index.html" class="nav-link active">博客</a>
-            <a href="../index.html##partner" class="nav-link">合作伙伴</a>
+            <a href="/" class="nav-link">首页</a>
+            <a href="/#about" class="nav-link">关于我</a>
+            <a href="/blog/" class="nav-link active">博客</a>
+            <a href="/#partner" class="nav-link">合作伙伴</a>
         </div>
         
         <div class="nav-right">
@@ -56,25 +53,21 @@
         </div>
     </nav>
 
-    <!-- 主内容区 -->
     <main class="main-content">
         <div class="blog-header">
             <h1 class="blog-title">技术随笔</h1>
             <p class="blog-subtitle">记录学习与思考的痕迹</p>
         </div>
 
-        <!-- 标签筛选 -->
         <div class="tags-filter" id="tagsFilter">
             <span class="tag active" data-tag="all">全部</span>
         </div>
 
-        <!-- 文章列表 -->
         <div class="posts-container" id="postsContainer">
             <div class="loading">加载中...</div>
         </div>
     </main>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
@@ -85,9 +78,9 @@
                 <div class="footer-section">
                     <h4>快速链接</h4>
                     <ul>
-                        <li><a href="../index.html">首页</a></li>
-                        <li><a href="./index.html">博客</a></li>
-                        <li><a href="../index.html#about">关于我</a></li>
+                        <li><a href="/">首页</a></li>
+                        <li><a href="/blog/">博客</a></li>
+                        <li><a href="/#about">关于我</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
@@ -99,13 +92,12 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 土豆的小站 · Made with ❤️ · All rights reserved</p>
+                <p>&copy; 2026 土豆的小站 · Made with &#10084;&#65039; · All rights reserved</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // 主题切换
         (function() {
             const themeToggle = document.getElementById('themeToggle');
             const html = document.documentElement;
@@ -113,30 +105,20 @@
             themeToggle.addEventListener('click', function() {
                 const currentTheme = html.getAttribute('data-theme');
                 const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-                
                 html.setAttribute('data-theme', newTheme);
                 localStorage.setItem('theme', newTheme);
             });
-            
-            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
-                if (!localStorage.getItem('theme')) {
-                    const newTheme = e.matches ? 'dark' : 'light';
-                    html.setAttribute('data-theme', newTheme);
-                }
-            });
         })();
 
-        // 加载文章数据
         let allPosts = [];
         let allTags = new Set();
 
         async function loadPosts() {
             try {
-                const response = await fetch('../data/posts.json');
+                const response = await fetch('/data/posts.json');
                 const data = await response.json();
                 allPosts = data.posts.sort((a, b) => new Date(b.date) - new Date(a.date));
                 
-                // 收集所有标签
                 allPosts.forEach(post => {
                     if (post.tags) {
                         post.tags.forEach(tag => allTags.add(tag));
@@ -152,7 +134,6 @@
             }
         }
 
-        // 渲染标签
         function renderTags() {
             const container = document.getElementById('tagsFilter');
             const tags = Array.from(allTags).sort();
@@ -167,7 +148,6 @@
             });
         }
 
-        // 渲染文章列表
         function renderPosts(posts) {
             const container = document.getElementById('postsContainer');
             
@@ -177,7 +157,7 @@
             }
             
             container.innerHTML = posts.map(post => `
-                <article class="post-card-item" onclick="location.href='./post.html?id=${post.id}'">
+                <article class="post-card-item" onclick="location.href='/blog/post/${post.id}/'">
                     <h2 class="post-card-title">${post.title}</h2>
                     <div class="post-card-meta">
                         <span class="post-date">${formatDate(post.date)}</span>
@@ -191,20 +171,16 @@
             `).join('');
         }
 
-        // 格式化日期
         function formatDate(dateStr) {
             const date = new Date(dateStr);
             return `${date.getFullYear()}.${String(date.getMonth() + 1).padStart(2, '0')}.${String(date.getDate()).padStart(2, '0')}`;
         }
 
-        // 按标签筛选
         function filterByTag(tag) {
-            // 更新标签样式
             document.querySelectorAll('.tag').forEach(t => {
                 t.classList.toggle('active', t.dataset.tag === tag);
             });
             
-            // 筛选文章
             if (tag === 'all') {
                 renderPosts(allPosts);
             } else {
@@ -215,10 +191,8 @@
             }
         }
 
-        // 全部标签点击事件
         document.querySelector('[data-tag="all"]').onclick = () => filterByTag('all');
 
-        // 初始化
         loadPosts();
     </script>
 </body>

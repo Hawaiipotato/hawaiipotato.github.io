@@ -1,3 +1,12 @@
+---
+id: "2"
+title: "Markdown 样式演示"
+date: "2026-02-10"
+author: "Potato"
+tags: ["技术", "Markdown"]
+summary: "这是一篇用于测试 Markdown 渲染效果的文章，展示了各种 Markdown 语法的样式。"
+---
+
 这篇文章展示了博客支持的各种 Markdown 语法效果。
 
 ## 文本样式

@@ -6,7 +6,10 @@
       "title": "欢迎来到我的博客",
       "date": "2026-02-11",
       "author": "Potato",
-      "tags": ["随笔", "博客"],
+      "tags": [
+        "随笔",
+        "博客"
+      ],
       "summary": "这是我的第一篇博客文章，记录一下搭建这个博客的过程和未来的写作计划。"
     },
     {
@@ -15,7 +18,10 @@
       "title": "Markdown 样式演示",
       "date": "2026-02-10",
       "author": "Potato",
-      "tags": ["技术", "Markdown"],
+      "tags": [
+        "技术",
+        "Markdown"
+      ],
       "summary": "这是一篇用于测试 Markdown 渲染效果的文章，展示了各种 Markdown 语法的样式。"
     },
     {
@@ -24,7 +30,10 @@
       "title": "uv：Python项目环境管理神器",
       "date": "2026-02-10",
       "author": "土豆",
-      "tags": ["uv", "Python"],
+      "tags": [
+        "uv",
+        "Python"
+      ],
       "summary": "介绍 uv 这个 Rust 编写的 Python 项目管理工具，集成 pip/venv/pipx/pyenv 功能，解决环境配置难题。"
     }
   ]

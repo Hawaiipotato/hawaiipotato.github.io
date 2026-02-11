@@ -609,6 +609,13 @@
     }
 }
 
+/* Giscus 评论区 */
+.giscus-container {
+    margin-top: 50px;
+    padding-top: 30px;
+    border-top: 1px solid var(--border-color);
+}
+
 /* ========================================
    响应式
    ======================================== */

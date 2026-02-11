@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Markdown 样式演示 - 土豆的小站</title>
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/blog/css/blog.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css" id="hljs-light">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css" id="hljs-dark" disabled>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/style.css">
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('theme');
+            const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const theme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
+</head>
+<body>
+    <nav class="top-nav">
+        <a href="/" class="nav-brand">土豆的小站</a>
+        <div class="nav-center">
+            <a href="/" class="nav-link">首页</a>
+            <a href="/#about" class="nav-link">关于我</a>
+            <a href="/blog/" class="nav-link active">博客</a>
+            <a href="/#partner" class="nav-link">合作伙伴</a>
+        </div>
+        <div class="nav-right">
+            <button class="theme-toggle" id="themeToggle" aria-label="切换主题">
+                <svg class="theme-icon sun" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="5"/>
+                    <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="2" fill="none"/>
+                </svg>
+                <div class="theme-slider"></div>
+                <svg class="theme-icon moon" viewBox="0 0 24 24">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                </svg>
+            </button>
+            <a href="https://github.com/Hawaiipotato" target="_blank" class="github-link" aria-label="GitHub">
+                <svg viewBox="0 0 16 16" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+                </svg>
+            </a>
+        </div>
+    </nav>
+
+    <div class="reading-progress" id="readingProgress"></div>
+
+    <main class="post-page">
+        <div class="post-wrapper">
+            <div class="post-card">
+                <h1 class="post-title">Markdown 样式演示</h1>
+                <div class="post-meta">
+                    <span class="post-date">2026.02.10</span>
+                    <span class="post-author">Potato</span>
+                </div>
+                <div class="post-tags"><span class="post-tag">技术</span><span class="post-tag">Markdown</span></div>
+            </div>
+            
+            <div class="post-content markdown-body" id="postContent"></div>
+            
+            <div class="post-nav" id="postNav"></div>
+            
+            <!-- Giscus 评论区 -->
+            <div class="giscus-container">
+                <script src="https://giscus.app/client.js"
+                    data-repo="Hawaiipotato/hawaiipotato.github.io"
+                    data-repo-id="R_kgDOOI58bA"
+                    data-category="Announcements"
+                    data-category-id="DIC_kwDOOI58bM4C2MS1"
+                    data-mapping="pathname"
+                    data-strict="0"
+                    data-reactions-enabled="1"
+                    data-emit-metadata="0"
+                    data-input-position="top"
+                    data-theme="preferred_color_scheme"
+                    data-lang="zh-CN"
+                    crossorigin="anonymous"
+                    async>
+                </script>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>土豆的小站</h4>
+                    <p>一个开发者的个人空间，记录技术与生活的点滴。</p>
+                </div>
+                <div class="footer-section">
+                    <h4>快速链接</h4>
+                    <ul>
+                        <li><a href="/">首页</a></li>
+                        <li><a href="/blog/">博客</a></li>
+                        <li><a href="/#about">关于我</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>联系方式</h4>
+                    <ul>
+                        <li><a href="https://github.com/Hawaiipotato" target="_blank">GitHub</a></li>
+                        <li><a href="mailto:hawaiipotatoes@gmail.com">邮箱</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 土豆的小站 · Made with &#10084;&#65039; · All rights reserved</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        (function() {
+            const themeToggle = document.getElementById('themeToggle');
+            const html = document.documentElement;
+            const hljsLight = document.getElementById('hljs-light');
+            const hljsDark = document.getElementById('hljs-dark');
+            
+            function updateHighlightTheme() {
+                const isDark = html.getAttribute('data-theme') === 'dark';
+                hljsLight.disabled = isDark;
+                hljsDark.disabled = !isDark;
+            }
+            
+            updateHighlightTheme();
+            
+            themeToggle.addEventListener('click', function() {
+                const currentTheme = html.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                html.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+                updateHighlightTheme();
+            });
+        })();
+
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('readingProgress').style.width = scrolled + '%';
+        });
+
+        // 渲染 Markdown
+        const mdContent = "\n这篇文章展示了博客支持的各种 Markdown 语法效果。\n\n## 文本样式\n\n**粗体文本** 和 *斜体文本* 和 ~~删除线~~\n\n## 代码展示\n\n### 行内代码\n\n使用 `console.log()` 可以在控制台输出信息。\n\n### 代码块\n\n```python\n# Python 示例\ndef hello_world():\n    print(\"Hello, World!\")\n    return True\n\nif __name__ == \"__main__\":\n    hello_world()\n```\n\n```javascript\n// JavaScript 示例\nasync function fetchData() {\n    try {\n        const response = await fetch('/api/data');\n        const data = await response.json();\n        console.log(data);\n    } catch (error) {\n        console.error('Error:', error);\n    }\n}\n```\n\n```css\n/* CSS 示例 */\n.button {\n    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);\n    border: none;\n    border-radius: 8px;\n    padding: 12px 24px;\n    color: white;\n    cursor: pointer;\n    transition: transform 0.2s ease;\n}\n\n.button:hover {\n    transform: translateY(-2px);\n}\n```\n\n## 列表\n\n### 无序列表\n\n- 第一项\n- 第二项\n  - 子项 A\n  - 子项 B\n- 第三项\n\n### 有序列表\n\n1. 第一步\n2. 第二步\n3. 第三步\n\n## 引用\n\n> 这是一段引用文字。\n> \n> 可以有多行，适合引用名人名言或重要提示。\n\n## 表格\n\n| 功能 | 支持状态 | 备注 |\n|------|---------|------|\n| Markdown 渲染 | ✅ 已支持 | 使用 Marked.js |\n| 代码高亮 | ✅ 已支持 | 使用 Highlight.js |\n| 暗色主题 | ✅ 已支持 | 自动切换 |\n| 标签筛选 | ✅ 已支持 | 可点击筛选 |\n\n## 链接\n\n访问 [GitHub](https://github.com) 或 [我的博客首页](../)\n\n## 分割线\n\n上面的内容结束\n\n---\n\n下面的内容开始\n\n## 总结\n\n这个博客支持标准的 Markdown 语法，包括：\n\n1. 标题层级（H1-H6）\n2. 文本样式（粗体、斜体、删除线）\n3. 代码（行内代码和代码块）\n4. 列表（有序和无序）\n5. 引用块\n6. 表格\n7. 链接和图片\n8. 分割线\n\n开始写作吧！\n";
+        marked.setOptions({ breaks: true, gfm: true, headerIds: true, mangle: false });
+        document.getElementById('postContent').innerHTML = marked.parse(mdContent);
+        document.querySelectorAll('pre code').forEach((block) => {
+            hljs.highlightElement(block);
+        });
+
+        // 加载文章导航
+        fetch('/data/posts.json')
+            .then(r => r.json())
+            .then(data => {
+                const posts = data.posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+                const currentId = '2';
+                const currentIndex = posts.findIndex(p => p.id === currentId);
+                const prevPost = posts[currentIndex + 1];
+                const nextPost = posts[currentIndex - 1];
+                
+                if (!prevPost && !nextPost) return;
+                
+                let navHtml = '<div class="post-nav-inner">';
+                
+                if (prevPost) {
+                    navHtml += '<a href="/blog/post/' + prevPost.id + '/" class="post-nav-link">' +
+                        '<span class="post-nav-label">← 上一篇</span>' +
+                        '<span class="post-nav-title">' + escapeHtml(prevPost.title) + '</span></a>';
+                } else {
+                    navHtml += '<div></div>';
+                }
+                
+                if (nextPost) {
+                    navHtml += '<a href="/blog/post/' + nextPost.id + '/" class="post-nav-link post-nav-next">' +
+                        '<span class="post-nav-label">下一篇 →</span>' +
+                        '<span class="post-nav-title">' + escapeHtml(nextPost.title) + '</span></a>';
+                }
+                
+                navHtml += '</div>';
+                document.getElementById('postNav').innerHTML = navHtml;
+            });
+
+        function escapeHtml(str) {
+            const div = document.createElement('div');
+            div.textContent = str;
+            return div.innerHTML;
+        }
+    </script>
+</body>
+</html>

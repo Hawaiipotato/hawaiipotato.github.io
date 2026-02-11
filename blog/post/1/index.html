@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>欢迎来到我的博客 - 土豆的小站</title>
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/blog/css/blog.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css" id="hljs-light">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css" id="hljs-dark" disabled>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/style.css">
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('theme');
+            const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const theme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
+</head>
+<body>
+    <nav class="top-nav">
+        <a href="/" class="nav-brand">土豆的小站</a>
+        <div class="nav-center">
+            <a href="/" class="nav-link">首页</a>
+            <a href="/#about" class="nav-link">关于我</a>
+            <a href="/blog/" class="nav-link active">博客</a>
+            <a href="/#partner" class="nav-link">合作伙伴</a>
+        </div>
+        <div class="nav-right">
+            <button class="theme-toggle" id="themeToggle" aria-label="切换主题">
+                <svg class="theme-icon sun" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="5"/>
+                    <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="2" fill="none"/>
+                </svg>
+                <div class="theme-slider"></div>
+                <svg class="theme-icon moon" viewBox="0 0 24 24">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                </svg>
+            </button>
+            <a href="https://github.com/Hawaiipotato" target="_blank" class="github-link" aria-label="GitHub">
+                <svg viewBox="0 0 16 16" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+                </svg>
+            </a>
+        </div>
+    </nav>
+
+    <div class="reading-progress" id="readingProgress"></div>
+
+    <main class="post-page">
+        <div class="post-wrapper">
+            <div class="post-card">
+                <h1 class="post-title">欢迎来到我的博客</h1>
+                <div class="post-meta">
+                    <span class="post-date">2026.02.11</span>
+                    <span class="post-author">Potato</span>
+                </div>
+                <div class="post-tags"><span class="post-tag">随笔</span><span class="post-tag">博客</span></div>
+            </div>
+            
+            <div class="post-content markdown-body" id="postContent"></div>
+            
+            <div class="post-nav" id="postNav"></div>
+            
+            <!-- Giscus 评论区 -->
+            <div class="giscus-container">
+                <script src="https://giscus.app/client.js"
+                    data-repo="Hawaiipotato/hawaiipotato.github.io"
+                    data-repo-id="R_kgDOOI58bA"
+                    data-category="Announcements"
+                    data-category-id="DIC_kwDOOI58bM4C2MS1"
+                    data-mapping="pathname"
+                    data-strict="0"
+                    data-reactions-enabled="1"
+                    data-emit-metadata="0"
+                    data-input-position="top"
+                    data-theme="preferred_color_scheme"
+                    data-lang="zh-CN"
+                    crossorigin="anonymous"
+                    async>
+                </script>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>土豆的小站</h4>
+                    <p>一个开发者的个人空间，记录技术与生活的点滴。</p>
+                </div>
+                <div class="footer-section">
+                    <h4>快速链接</h4>
+                    <ul>
+                        <li><a href="/">首页</a></li>
+                        <li><a href="/blog/">博客</a></li>
+                        <li><a href="/#about">关于我</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>联系方式</h4>
+                    <ul>
+                        <li><a href="https://github.com/Hawaiipotato" target="_blank">GitHub</a></li>
+                        <li><a href="mailto:hawaiipotatoes@gmail.com">邮箱</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 土豆的小站 · Made with &#10084;&#65039; · All rights reserved</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        (function() {
+            const themeToggle = document.getElementById('themeToggle');
+            const html = document.documentElement;
+            const hljsLight = document.getElementById('hljs-light');
+            const hljsDark = document.getElementById('hljs-dark');
+            
+            function updateHighlightTheme() {
+                const isDark = html.getAttribute('data-theme') === 'dark';
+                hljsLight.disabled = isDark;
+                hljsDark.disabled = !isDark;
+            }
+            
+            updateHighlightTheme();
+            
+            themeToggle.addEventListener('click', function() {
+                const currentTheme = html.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                html.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+                updateHighlightTheme();
+            });
+        })();
+
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('readingProgress').style.width = scrolled + '%';
+        });
+
+        // 渲染 Markdown
+        const mdContent = "\n> 这是我用纯前端技术搭建的个人博客，支持 Markdown 写作。\n\n## 为什么要写博客？\n\n写博客是一个很好的习惯，它可以帮助我：\n\n- **整理思路** - 把学到的知识用自己的话写出来\n- **记录成长** - 回头看自己之前的文章，能看到进步\n- **分享交流** - 也许能帮助到其他人\n\n## 这个博客的技术栈\n\n这个博客完全基于静态文件，使用以下技术：\n\n1. **HTML/CSS/JavaScript** - 纯原生实现\n2. **Marked.js** - 用于 Markdown 渲染\n3. **Highlight.js** - 代码高亮\n4. **GitHub Pages** - 免费托管\n\n## 写作流程\n\n发布一篇新文章只需要两步：\n\n### 第一步：编写 Markdown 文件\n\n把写好的 `.md` 文件放到 `blog/posts/` 目录下，文件名和文章 ID 对应。\n\n### 第二步：更新元数据\n\n在 `data/posts.json` 中添加文章信息：\n\n```json\n{\n  \"id\": \"文章ID\",\n  \"title\": \"文章标题\",\n  \"date\": \"2026-02-11\",\n  \"author\": \"作者名\",\n  \"tags\": [\"标签1\", \"标签2\"],\n  \"summary\": \"文章摘要\"\n}\n```\n\n## 未来的计划\n\n接下来我打算写这些主题：\n\n- Python 爬虫实战\n- Windows 调试技巧\n- 一些有趣的小脚本\n\n希望这个博客能持续更新下去！\n\n---\n\n*最后更新：2026年2月11日*\n";
+        marked.setOptions({ breaks: true, gfm: true, headerIds: true, mangle: false });
+        document.getElementById('postContent').innerHTML = marked.parse(mdContent);
+        document.querySelectorAll('pre code').forEach((block) => {
+            hljs.highlightElement(block);
+        });
+
+        // 加载文章导航
+        fetch('/data/posts.json')
+            .then(r => r.json())
+            .then(data => {
+                const posts = data.posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+                const currentId = '1';
+                const currentIndex = posts.findIndex(p => p.id === currentId);
+                const prevPost = posts[currentIndex + 1];
+                const nextPost = posts[currentIndex - 1];
+                
+                if (!prevPost && !nextPost) return;
+                
+                let navHtml = '<div class="post-nav-inner">';
+                
+                if (prevPost) {
+                    navHtml += '<a href="/blog/post/' + prevPost.id + '/" class="post-nav-link">' +
+                        '<span class="post-nav-label">← 上一篇</span>' +
+                        '<span class="post-nav-title">' + escapeHtml(prevPost.title) + '</span></a>';
+                } else {
+                    navHtml += '<div></div>';
+                }
+                
+                if (nextPost) {
+                    navHtml += '<a href="/blog/post/' + nextPost.id + '/" class="post-nav-link post-nav-next">' +
+                        '<span class="post-nav-label">下一篇 →</span>' +
+                        '<span class="post-nav-title">' + escapeHtml(nextPost.title) + '</span></a>';
+                }
+                
+                navHtml += '</div>';
+                document.getElementById('postNav').innerHTML = navHtml;
+            });
+
+        function escapeHtml(str) {
+            const div = document.createElement('div');
+            div.textContent = str;
+            return div.innerHTML;
+        }
+    </script>
+</body>
+</html>
