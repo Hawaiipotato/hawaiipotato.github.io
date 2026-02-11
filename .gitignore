@@ -1,6 +1,8 @@
 /.vscode
 /.git
 /.idea
+/.agent
+/.kimi
 
 # Python 虚拟环境
 /.venv
