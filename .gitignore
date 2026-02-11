@@ -1,3 +1,16 @@
 /.vscode
 /.git
 /.idea
+
+# Python 虚拟环境
+/.venv
+/test_server.py
+
+# Node.js 依赖
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# 本地发布器配置
+/blog/admin/node_modules/

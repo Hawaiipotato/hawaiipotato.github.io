@@ -191,10 +191,12 @@
 
         .theme-icon.sun {
             fill: #f59e0b;
+            margin-left: 2px;
         }
 
         .theme-icon.moon {
             fill: #a5b4fc;
+            margin-right: 2px;
         }
 
         [data-theme="dark"] .theme-icon.sun {
@@ -404,6 +406,7 @@
         <div class="nav-center">
             <button class="nav-link active" data-page="welcome" onclick="switchPage('welcome')">首页</button>
             <button class="nav-link" data-page="about" onclick="switchPage('about')">关于我</button>
+            <a href="blog/index.html" class="nav-link">博客</a>
             <button class="nav-link" data-page="partner" onclick="switchPage('partner')">合作伙伴</button>
         </div>
         
@@ -566,6 +569,7 @@
                         <h4>快速链接</h4>
                         <ul>
                             <li><a href="#" onclick="switchPage('welcome'); return false;">首页</a></li>
+                            <li><a href="blog/index.html">博客</a></li>
                             <li><a href="#" onclick="switchPage('about'); return false;">关于我</a></li>
                             <li><a href="#" onclick="switchPage('partner'); return false;">合作伙伴</a></li>
                         </ul>
@@ -643,6 +647,18 @@
 
         // 初始化页面状态
         history.replaceState({page: 'welcome'}, '', './');
+
+        // 处理来自博客页的双井号锚点
+        (function() {
+            const hash = window.location.hash;
+            if (hash === '##about') {
+                switchPage('about');
+                history.replaceState({page: 'about'}, '', './about');
+            } else if (hash === '##partner') {
+                switchPage('partner');
+                history.replaceState({page: 'partner'}, '', './partner');
+            }
+        })();
     </script>
 </body>
 </html>
