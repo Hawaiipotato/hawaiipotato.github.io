@@ -12,6 +12,8 @@ jobs:
   validate-push:
     runs-on: ubuntu-latest
     name: Validate Repository Changes
+    permissions:
+      contents: read
 
     steps:
       - name: Checkout code
