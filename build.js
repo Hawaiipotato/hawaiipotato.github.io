@@ -134,23 +134,7 @@ function generatePostHtml(post, mdContent) {
             <div class="post-nav" id="postNav"></div>
             
             <!-- Giscus 评论区 -->
-            <div class="giscus-container">
-                <script src="https://giscus.app/client.js"
-                    data-repo="Hawaiipotato/hawaiipotato.github.io"
-                    data-repo-id="R_kgDOOI58bA"
-                    data-category="Announcements"
-                    data-category-id="DIC_kwDOOI58bM4C2MS1"
-                    data-mapping="pathname"
-                    data-strict="0"
-                    data-reactions-enabled="1"
-                    data-emit-metadata="0"
-                    data-input-position="top"
-                    data-theme="preferred_color_scheme"
-                    data-lang="zh-CN"
-                    crossorigin="anonymous"
-                    async>
-                </script>
-            </div>
+            <div class="giscus-container" id="giscusContainer"></div>
         </div>
     </main>
 
@@ -196,6 +180,17 @@ function generatePostHtml(post, mdContent) {
                 hljsDark.disabled = !isDark;
             }
             
+            function updateGiscusTheme() {
+                const isDark = html.getAttribute('data-theme') === 'dark';
+                const iframe = document.querySelector('iframe.giscus-frame');
+                if (iframe) {
+                    iframe.contentWindow.postMessage(
+                        { giscus: { setConfig: { theme: isDark ? 'dark' : 'light' } } },
+                        'https://giscus.app'
+                    );
+                }
+            }
+            
             updateHighlightTheme();
             
             themeToggle.addEventListener('click', function() {
@@ -204,6 +199,7 @@ function generatePostHtml(post, mdContent) {
                 html.setAttribute('data-theme', newTheme);
                 localStorage.setItem('theme', newTheme);
                 updateHighlightTheme();
+                updateGiscusTheme();
             });
         })();
 
@@ -259,6 +255,31 @@ function generatePostHtml(post, mdContent) {
             div.textContent = str;
             return div.innerHTML;
         }
+
+        // 动态加载 giscus
+        (function() {
+            const savedTheme = localStorage.getItem('theme');
+            const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const theme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
+            const giscusTheme = theme === 'dark' ? 'dark' : 'light';
+            
+            const script = document.createElement('script');
+            script.src = 'https://giscus.app/client.js';
+            script.setAttribute('data-repo', 'Hawaiipotato/hawaiipotato.github.io');
+            script.setAttribute('data-repo-id', 'R_kgDOOI58bA');
+            script.setAttribute('data-category', 'Announcements');
+            script.setAttribute('data-category-id', 'DIC_kwDOOI58bM4C2MS1');
+            script.setAttribute('data-mapping', 'pathname');
+            script.setAttribute('data-strict', '0');
+            script.setAttribute('data-reactions-enabled', '1');
+            script.setAttribute('data-emit-metadata', '0');
+            script.setAttribute('data-input-position', 'top');
+            script.setAttribute('data-theme', giscusTheme);
+            script.setAttribute('data-lang', 'zh-CN');
+            script.setAttribute('crossorigin', 'anonymous');
+            script.async = true;
+            document.getElementById('giscusContainer').appendChild(script);
+        })();
     </script>
 </body>
 </html>`;
