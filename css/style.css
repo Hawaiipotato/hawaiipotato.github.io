@@ -89,10 +89,8 @@ body {
     color: var(--text-primary);
     transition: background-color var(--transition-slow), color var(--transition-slow);
     min-height: 100vh;
-}
-
-a, a:link, a:visited, a:hover, a:active {
-    text-decoration: none;
+    display: flex;
+    flex-direction: column;
 }
 
 /* ----------------------------------------
@@ -179,7 +177,6 @@ a, a:link, a:visited, a:hover, a:active {
     gap: 15px;
 }
 
-/* 主题切换滑块 */
 .theme-toggle {
     position: relative;
     width: 70px;
@@ -191,7 +188,7 @@ a, a:link, a:visited, a:hover, a:active {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 6px;
+    padding: 0 10px;
     transition: all 0.3s ease;
 }
 
@@ -211,7 +208,7 @@ a, a:link, a:visited, a:hover, a:active {
 }
 
 [data-theme="dark"] .theme-slider {
-    transform: translateX(36px);
+    transform: translateX(34px);
 }
 
 .theme-icon {
@@ -222,13 +219,13 @@ a, a:link, a:visited, a:hover, a:active {
 }
 
 .theme-icon.sun {
-    margin-left: 2px;
     fill: #f59e0b;
+    margin-left: -1px;
 }
 
 .theme-icon.moon {
-    margin-right: 2px;
     fill: #a5b4fc;
+    margin-right: -1px;
 }
 
 [data-theme="dark"] .theme-icon.sun {
@@ -239,7 +236,6 @@ a, a:link, a:visited, a:hover, a:active {
     fill: #00d4ff;
 }
 
-/* GitHub 链接 */
 .github-link {
     width: 40px;
     height: 40px;
@@ -280,6 +276,13 @@ a, a:link, a:visited, a:hover, a:active {
 
 .page-content {
     padding-top: 0;
+}
+
+.main-content {
+    flex: 1 0 auto;
+    padding-top: 70px;
+    display: flex;
+    flex-direction: column;
 }
 
 /* ----------------------------------------
@@ -702,17 +705,52 @@ header p {
    响应式设计
    ---------------------------------------- */
 @media (max-width: 768px) {
-    nav {
-        padding: 10px 20px;
+    .top-nav {
+        padding: 0 15px;
+        height: 60px;
     }
-    
-    .nav-links {
+
+    .nav-brand {
+        font-size: 1.1rem;
+    }
+
+    .nav-center {
         gap: 4px;
     }
-    
-    .nav-links a {
-        padding: 6px 12px;
+
+    .nav-link {
+        padding: 8px 12px;
         font-size: 0.9rem;
+    }
+
+    .theme-toggle {
+        width: 60px;
+        height: 30px;
+        padding: 0 8px;
+    }
+
+    .theme-slider {
+        width: 22px;
+        height: 22px;
+    }
+
+    [data-theme="dark"] .theme-slider {
+        transform: translateX(30px);
+    }
+
+    .theme-icon {
+        width: 14px;
+        height: 14px;
+    }
+
+    .github-link {
+        width: 36px;
+        height: 36px;
+    }
+
+    .github-link svg {
+        width: 18px;
+        height: 18px;
     }
     
     header h1 {
@@ -756,41 +794,80 @@ header p {
     .contact-container {
         grid-template-columns: 1fr;
     }
+
+    .reading-progress {
+        top: 60px;
+    }
+    
+    .blog-header {
+        padding: 80px 20px 40px;
+    }
+    
+    .blog-title {
+        font-size: 2rem;
+    }
+    
+    .post-page {
+        padding: 80px 16px 30px;
+    }
+    
+    .post-card {
+        padding: 24px;
+        margin-bottom: 24px;
+    }
+    
+    .post-title {
+        font-size: 1.4rem;
+    }
+    
+    .post-meta {
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .post-nav-inner {
+        flex-direction: column;
+    }
+    
+    .post-nav-next {
+        text-align: left;
+    }
+    
+    .posts-container {
+        padding: 0 16px 30px;
+    }
+    
+    .post-card-item {
+        padding: 20px;
+    }
 }
 
 @media (max-width: 480px) {
-    .nav-right {
-        gap: 10px;
-    }
-    
     .nav-link {
         padding: 6px 10px;
         font-size: 0.85rem;
     }
     
-    .theme-toggle {
-        width: 60px;
-        height: 30px;
-        padding: 0 5px;
-    }
-    
-    .theme-slider {
-        width: 22px;
-        height: 22px;
-    }
-    
-    [data-theme="dark"] .theme-slider {
-        transform: translateX(30px);
-    }
-    
-    .theme-icon {
-        width: 14px;
-        height: 14px;
-    }
-    
     header h1 {
         font-size: 1.6rem;
         letter-spacing: 2px;
+    }
+
+    .blog-title {
+        font-size: 1.6rem;
+    }
+    
+    .post-card {
+        padding: 20px;
+        border-radius: 12px;
+    }
+    
+    .post-title {
+        font-size: 1.2rem;
+    }
+    
+    .post-content {
+        font-size: 1rem;
     }
 }
 
@@ -959,7 +1036,6 @@ header p {
     color: var(--accent-primary);
 }
 
-/* 文章详情页 */
 .post-page {
     flex: 1;
     padding: 90px 20px 40px;
@@ -1227,95 +1303,4 @@ header p {
     margin-top: 50px;
     padding-top: 30px;
     border-top: 1px solid var(--border-color);
-}
-
-@media (max-width: 768px) {
-    .top-nav {
-        padding: 0 15px;
-        height: 60px;
-    }
-    
-    .nav-brand {
-        font-size: 1.1rem;
-    }
-    
-    .nav-link {
-        padding: 8px 12px;
-        font-size: 0.9rem;
-    }
-    
-    .github-link {
-        width: 36px;
-        height: 36px;
-    }
-    
-    .github-link svg {
-        width: 18px;
-        height: 18px;
-    }
-    
-    .blog-header {
-        padding: 80px 20px 40px;
-    }
-    
-    .blog-title {
-        font-size: 2rem;
-    }
-    
-    .post-page {
-        padding: 80px 16px 30px;
-    }
-    
-    .post-card {
-        padding: 24px;
-        margin-bottom: 24px;
-    }
-    
-    .post-title {
-        font-size: 1.4rem;
-    }
-    
-    .post-meta {
-        flex-direction: column;
-        gap: 8px;
-    }
-    
-    .post-nav-inner {
-        flex-direction: column;
-    }
-    
-    .post-nav-next {
-        text-align: left;
-    }
-    
-    .posts-container {
-        padding: 0 16px 30px;
-    }
-    
-    .post-card-item {
-        padding: 20px;
-    }
-    
-    .reading-progress {
-        top: 60px;
-    }
-}
-
-@media (max-width: 480px) {
-    .blog-title {
-        font-size: 1.6rem;
-    }
-    
-    .post-card {
-        padding: 20px;
-        border-radius: 12px;
-    }
-    
-    .post-title {
-        font-size: 1.2rem;
-    }
-    
-    .post-content {
-        font-size: 1rem;
-    }
 }

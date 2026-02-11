@@ -105,7 +105,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 6px;
+    padding: 0 10px;
     transition: all 0.3s ease;
 }
 
@@ -136,11 +136,11 @@
 }
 
 .theme-icon.sun {
-    margin-left: 2px;
+    margin-left: 0;
 }
 
 .theme-icon.moon {
-    margin-right: 2px;
+    margin-right: 0;
 }
 
 .theme-icon.sun {
