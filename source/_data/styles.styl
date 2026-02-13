@@ -1,0 +1,424 @@
+/* ============================================
+   Blog2 Style - Card-based Design Override
+   Glass-Tech Theme for Redefine
+   ============================================ */
+
+/* ============================================
+   CSS Variables - Blog2 Blue-Tech Style
+   ============================================ */
+:root {
+  /* Card backgrounds with glass effect */
+  --card-bg-light: rgba(255, 255, 255, 0.85);
+  --card-bg-dark: rgba(20, 15, 40, 0.8);
+  
+  /* Blue gradient from blog2 */
+  --gradient-blue: linear-gradient(135deg, #4A90D9 0%, #667eea 100%);
+  --gradient-cyber: linear-gradient(135deg, #00d4ff 0%, #b829dd 100%);
+  
+  /* Shadows */
+  --shadow-card: 0 8px 40px rgba(74, 144, 217, 0.15);
+  --shadow-card-hover: 0 12px 50px rgba(74, 144, 217, 0.25);
+  --shadow-glow: 0 0 30px rgba(74, 144, 217, 0.3);
+  
+  /* Border radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+}
+
+/* ============================================
+   Common Card Base Style
+   ============================================ */
+.blog2-card {
+  background: var(--card-bg-light);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 30px;
+  transition: all var(--transition-normal);
+  box-shadow: var(--shadow-card);
+}
+
+.blog2-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-card-hover);
+  border-color: var(--primary-color);
+}
+
+.dark .blog2-card {
+  background: var(--card-bg-dark);
+}
+
+/* ============================================
+   About Page - Profile Section
+   ============================================ */
+.about-profile-container {
+  display: flex;
+  gap: 40px;
+  margin-bottom: 50px;
+  flex-wrap: wrap;
+}
+
+.about-profile-sidebar {
+  flex: 0 0 280px;
+  text-align: center;
+}
+
+.about-profile-avatar {
+  width: 200px;
+  height: 200px;
+  border-radius: var(--radius-xl);
+  margin: 0 auto 20px;
+  background-size: cover;
+  background-position: center;
+  border: 3px solid var(--border-color);
+  box-shadow: var(--shadow-card);
+  transition: all var(--transition-normal);
+}
+
+.about-profile-avatar:hover {
+  transform: scale(1.02);
+  box-shadow: var(--shadow-glow);
+}
+
+.about-profile-name {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--first-text-color);
+}
+
+.about-profile-title {
+  font-size: 1rem;
+  color: var(--primary-color);
+  font-weight: 500;
+}
+
+.about-profile-content {
+  flex: 1;
+  min-width: 300px;
+}
+
+/* ============================================
+   About Page - Skills Cards
+   ============================================ */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.skill-card {
+  composes: blog2-card;
+  text-align: center;
+}
+
+.skill-card h4 {
+  margin: 0 0 12px 0;
+  color: var(--primary-color);
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.skill-card p {
+  margin: 0;
+  color: var(--second-text-color);
+  font-size: 0.95rem;
+}
+
+/* ============================================
+   About Page - Interest Tags
+   ============================================ */
+.interests-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.interest-tag {
+  background: var(--gradient-blue);
+  color: white;
+  padding: 10px 20px;
+  border-radius: var(--radius-xl);
+  font-size: 0.9rem;
+  font-weight: 500;
+  box-shadow: 0 2px 8px rgba(74, 144, 217, 0.3);
+  transition: all var(--transition-fast);
+}
+
+.interest-tag:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-glow);
+}
+
+.dark .interest-tag {
+  background: var(--gradient-cyber);
+}
+
+/* ============================================
+   About Page - Contact Cards
+   ============================================ */
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.contact-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  padding: 18px 20px;
+  background: var(--card-bg-light);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
+  text-decoration: none !important;
+  color: inherit;
+  backdrop-filter: blur(20px);
+}
+
+.contact-card:hover {
+  border-color: var(--primary-color);
+  box-shadow: var(--shadow-card);
+  transform: translateX(5px);
+  text-decoration: none !important;
+}
+
+.dark .contact-card {
+  background: var(--card-bg-dark);
+}
+
+.contact-icon {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--gradient-blue);
+  border-radius: var(--radius-sm);
+  flex-shrink: 0;
+}
+
+.contact-icon svg {
+  width: 22px;
+  height: 22px;
+  fill: white;
+}
+
+.contact-info {
+  font-weight: 500;
+  color: var(--first-text-color);
+}
+
+/* ============================================
+   Links (Friends) Page - Partner Cards
+   ============================================ */
+.friends-container-custom {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+  margin-top: 30px;
+}
+
+.partner-card-custom {
+  background: var(--card-bg-light);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 30px;
+  text-align: center;
+  transition: all var(--transition-normal);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: var(--shadow-card);
+}
+
+.partner-card-custom:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-card-hover), var(--shadow-glow);
+  border-color: var(--primary-color);
+}
+
+.dark .partner-card-custom {
+  background: var(--card-bg-dark);
+}
+
+.partner-avatar-custom {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin: 0 auto 16px;
+  background-size: cover;
+  background-position: center;
+  border: 2px solid var(--border-color);
+  box-shadow: 0 2px 8px rgba(74, 144, 217, 0.2);
+  transition: all var(--transition-normal);
+}
+
+.partner-card-custom:hover .partner-avatar-custom {
+  transform: scale(1.1);
+  box-shadow: var(--shadow-glow);
+}
+
+.partner-name-custom {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: var(--first-text-color);
+}
+
+.partner-labels {
+  margin-bottom: 12px;
+}
+
+.partner-label-custom {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 500;
+  padding: 4px 12px;
+  margin: 0 3px 6px;
+  background: var(--gradient-blue);
+  color: white;
+  border-radius: var(--radius-xl);
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 6px rgba(74, 144, 217, 0.3);
+}
+
+.dark .partner-label-custom {
+  background: var(--gradient-cyber);
+}
+
+.partner-description-custom {
+  color: var(--second-text-color);
+  margin-bottom: 20px;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  min-height: 45px;
+}
+
+.partner-link-btn {
+  display: inline-block;
+  padding: 10px 24px;
+  background: var(--gradient-blue);
+  color: white;
+  text-decoration: none;
+  border-radius: var(--radius-xl);
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: all var(--transition-fast);
+  box-shadow: 0 2px 8px rgba(74, 144, 217, 0.3);
+}
+
+.partner-link-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-glow);
+  color: white;
+  text-decoration: none;
+}
+
+.dark .partner-link-btn {
+  background: var(--gradient-cyber);
+}
+
+/* ============================================
+   Section Titles
+   ============================================ */
+.section-title-custom {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin: 40px 0 20px 0;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--border-color);
+  display: inline-block;
+  color: var(--first-text-color);
+}
+
+/* ============================================
+   Responsive Design
+   ============================================ */
+@media (max-width: 768px) {
+  .about-profile-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .about-profile-sidebar {
+    flex: 1;
+  }
+  
+  .about-profile-avatar {
+    width: 150px;
+    height: 150px;
+  }
+  
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .friends-container-custom {
+    grid-template-columns: 1fr;
+  }
+  
+  .partner-card-custom {
+    padding: 24px;
+  }
+}
+
+/* ============================================
+   Force code blocks to use dark theme (Tokyo Night) in both light and dark mode
+   ============================================ */
+html[data-theme="light"] .highlight,
+html[data-theme="light"] pre,
+html[data-theme="light"] code {
+    background-color: #1a1b26 !important;
+    color: #a9b1d6 !important;
+}
+
+html[data-theme="light"] .highlight .keyword { color: #bb9af7 !important; }
+html[data-theme="light"] .highlight .string { color: #9ece6a !important; }
+html[data-theme="light"] .highlight .function { color: #7aa2f7 !important; }
+html[data-theme="light"] .highlight .number { color: #ff9e64 !important; }
+html[data-theme="light"] .highlight .comment { color: #565f89 !important; }
+html[data-theme="light"] .highlight .operator { color: #bb9af7 !important; }
+html[data-theme="light"] .highlight .punctuation { color: #9abdf5 !important; }
+
+code, pre, .highlight {
+    font-family: "Maple Mono", "JetBrains Mono", "Fira Code", monospace !important;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* Custom scrollbar - Tokyo Night style */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #1a1b26;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #565f89;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #7aa2f7;
+}

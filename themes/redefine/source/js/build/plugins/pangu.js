@@ -1,0 +1,1 @@
+function n(){pangu.spacingElementByClassName("markdown-body"),pangu.autoSpacingPage()}document.addEventListener("DOMContentLoaded",n);try{swup.hooks.on("page:view",n)}catch(n){}

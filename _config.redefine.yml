@@ -1,0 +1,352 @@
+# Hexo Theme Redefine Configuration
+# Generated based on blog2 style preferences
+# Place this file in your Hexo root directory
+
+# ============================================
+# BASIC INFORMATION
+# ============================================
+info:
+  title: "Potato's Blog"
+  subtitle: ""
+  author: Potato
+  url: http://hawaiipotato.github.io
+
+# ============================================
+# IMAGE CONFIGURATION
+# ============================================
+defaults:
+  favicon: /images/redefine-favicon.svg
+  logo: 
+  avatar: /images/cathead.jpg  # Will use blog2 avatar
+
+# ============================================
+# COLORS - Blue-Tech Style
+# ============================================
+colors:
+  primary: "#4A90D9"           # Light mode: Sky Blue (blog2 style)
+  secondary: "#2B7DE9"         # Light secondary: Brighter blue
+  default_mode: auto           # Follow system preference
+
+# ============================================
+# GLOBAL CUSTOMIZATION
+# ============================================
+global:
+  fonts:
+    chinese:
+      enable: true             # Enabled for body text (not titles)
+      family: "LXGW WenKai"
+      url: https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/style.css
+    english:
+      enable: true
+      family: "Maple Mono"
+      url: https://cdn.jsdelivr.net/npm/maple-mono@1.0.0/dist/maple-mono-regular/woff2/style.css
+    title:
+      enable: false
+  content_max_width: 1000px
+  sidebar_width: 210px
+  hover:
+    shadow: true               # Enable shadow effect on cards
+    scale: true                # Enable scale effect on cards
+  scroll_progress:
+    bar: true                  # Top progress bar
+    percentage: false          # No percentage display
+  website_counter:
+    url: https://cn.vercount.one/js
+    enable: true
+    site_pv: true
+    site_uv: true
+    post_pv: true
+  single_page: true
+  preloader:
+    enable: false
+  side_tools:
+    gear_rotation: true
+    auto_expand: false
+  open_graph:
+    enable: true
+    image: /images/redefine-og.webp
+    description: "Potato's Blog - Record technology and life"
+  google_analytics:
+    enable: false
+
+# ============================================
+# FONTAWESOME
+# ============================================
+fontawesome:
+  thin: false
+  light: false
+  duotone: false
+  sharp_solid: false
+
+# ============================================
+# HOME BANNER - With Hitokoto API
+# ============================================
+home_banner:
+  enable: true
+  style: fixed                 # Fixed background
+  image:
+    light: /images/background.jpg   # Cyberpunk city from blog2
+    dark: /images/background.jpg    # Same image for both modes
+  title: "Potato's Blog"       # Static title (same as logo)
+  subtitle:
+    text: ["休对故人思故国", "且将新火试新茶", "诗酒趁年华"]  # 3 sentences typing loop (no punctuation)
+    custom_source: "—— 苏轼《望江南·超然台作》"  # Source: Su Shi
+    hitokoto:
+      enable: false             # Disable hitokoto (using fixed text with typing effect)
+      show_author: true
+      api: https://v1.hitokoto.cn
+    # Typing effect settings (full loop mode)
+    typing_speed: 120           # Typing speed (ms)
+    backing_speed: 60           # Backspace speed (ms)
+    starting_delay: 800         # Delay before typing starts (ms)
+    backing_delay: 2000         # Delay before backspace starts (ms)
+    loop: true                  # Enable loop (type -> delete -> repeat)
+    smart_backspace: true       # Smart backspace (only delete different chars)
+  text_color:
+    light: "#fff"
+    dark: "#d1d1b6"
+  text_style:
+    title_size: 2.8rem
+    subtitle_size: 2.2rem
+    line_height: 1.2
+  custom_font:
+    enable: false
+  social_links:
+    enable: false
+    style: default
+    links:
+      github: 
+      email: 
+    qrs:
+      weixin: 
+
+# ============================================
+# NAVIGATION BAR - Blue gradient style
+# ============================================
+navbar:
+  auto_hide: false
+  color:
+    left: "#4A90D9"            # Blue gradient left
+    right: "#667eea"           # Blue-purple gradient right (blog2 style)
+    transparency: 35
+  width:
+    home: 1200px
+    pages: 1000px
+  links:
+    Home:
+      path: /
+      icon: fa-regular fa-house
+    Archives:
+      path: /archives
+      icon: fa-regular fa-archive
+    About:
+      path: /about
+      icon: fa-regular fa-user
+    Links:
+      path: /links
+      icon: fa-regular fa-link
+  search:
+    enable: false
+    preload: true
+
+# ============================================
+# HOME PAGE ARTICLE SETTINGS
+# ============================================
+home:
+  sidebar:
+    enable: true
+    position: left
+    first_item: menu
+    announcement: 
+    show_on_mobile: true
+    links:
+  article_date_format: auto
+  excerpt_length: 200
+  categories:
+    enable: true
+    limit: 3
+  tags:
+    enable: true
+    limit: 3
+
+# ============================================
+# ARTICLES - Tokyo Night Theme
+# ============================================
+articles:
+  style:
+    font_size: 16px
+    line_height: 1.6
+    image_border_radius: 14px
+    image_alignment: center
+    image_caption: false
+    link_icon: true
+    delete_mask: false
+    title_alignment: left
+    headings_top_spacing:
+      h1: 3.2rem
+      h2: 2.4rem
+      h3: 1.9rem
+      h4: 1.6rem
+      h5: 1.4rem
+      h6: 1.3rem
+  word_count:
+    enable: true
+    count: true
+    min2read: true
+  author_label:
+    enable: true
+    auto: false
+    list: ["Author", "Potato"]  # Labels after author name
+  code_block:
+    copy: true
+    style: simple              # Simple style (not mac)
+    highlight_theme:
+      light: tokyo-night-dark  # Force Tokyo Night for light mode
+      dark: tokyo-night-dark   # Tokyo Night for dark mode
+    font:
+      enable: true
+      family: "Maple Mono"
+      url: https://cdn.jsdelivr.net/npm/@lxgw/maple-mono@1.0.0/style.css
+  toc:
+    enable: true
+    max_depth: 3
+    number: false
+    expand: true
+    init_open: true
+  copyright:
+    enable: true
+    default: cc_by             # CC BY latest version
+  lazyload: true
+  pangu_js: false
+  recommendation:
+    enable: false
+    title: 推荐阅读
+    limit: 3
+    mobile_limit: 2
+    placeholder: /images/background.jpg
+    skip_dirs: []
+
+# ============================================
+# COMMENT - Giscus (from blog2)
+# ============================================
+comment:
+  enable: true                 # Enable Giscus
+  system: giscus
+  config:
+    giscus:
+      repo: Hawaiipotato/hawaiipotato.github.io
+      repo_id: R_kgDOOI58bA
+      category: Announcements
+      category_id: DIC_kwDOOI58bM4CoWAW
+      mapping: pathname
+      strict: 0
+      reactions_enabled: 1
+      emit_metadata: 0
+      lang: zh-CN
+      input_position: top
+      loading: lazy
+      # Theme configuration: light=github light, dark=cobalt
+      theme:
+        light: light           # GitHub Light
+        dark: cobalt           # Cobalt blue dark theme
+
+# ============================================
+# FOOTER
+# ============================================
+footer:
+  runtime: true                # Show website running time
+  icon: '<i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.5s; color: #f54545"></i>'
+  start: 2026/2/12 12:00:00    # Website start time
+  statistics: true             # Article and word count
+  customize:                   # Empty (CC and Powered by are built-in)
+  icp:
+    enable: false              # No ICP for now
+    number: 
+    url: 
+
+# ============================================
+# INJECT
+# ============================================
+inject:
+  enable: true
+  head: 
+    - <link rel="stylesheet" href="/css/blog2-style.css">
+  footer:
+    -
+
+# ============================================
+# PLUGINS
+# ============================================
+plugins:
+  feed:
+    enable: false
+  aplayer:
+    enable: true               # Keep Aplayer enabled (theme built-in)
+    type: fixed                # fixed or mini
+    audios: []                 # Empty - using MetingJs instead of manual audios
+  # MetingJs 配置（已禁用，如需启用请参考 source/_data/music-player-examples.md）
+  meting:
+    enable: false              # 当前禁用，将来可参考示例文档启用
+    global_sticky_enable: false
+    id: ''
+    server: 'netease'
+    type: 'playlist'
+    playerType: 'fixed'
+    preload: 'auto'
+    loop: 'all'
+    order: 'list'
+    theme: '#4A90D9'
+    autoplay: false
+    auto: ''
+    mutex: true
+    lrcType: 0
+    listFolded: false
+    listMaxHeight: '340px'
+    storageName: 'metingjs'
+    api: ''
+  mermaid:
+    enable: false              # Disabled for now
+    version: "11.4.1"
+
+# ============================================
+# FRIENDS LINKS
+# ============================================
+# 注释掉以下配置，因为我们已经在 source/links/index.md 中手动实现了
+# blog2 风格的友链卡片设计
+# links:
+#   - links_category: 合作伙伴
+#     has_thumbnail: false
+#     list:
+#       - name: "QiuSYan's Blog"
+#         link: https://blog.qiusyan.top
+#         description: 何不乘风去
+#         avatar: https://blog.qiusyan.top/img/avatar.jpg
+#       - name: 橘络信息科技工作室
+#         link: https://juluo.org
+#         description: 一个综合性技术工作室发布页，涵盖各类技术教程与工具下载等内容。
+#         avatar: https://juluo.org/upload/logo.png
+#       - name: 平平的小破站
+#         link: https://ppkjgzs.top
+#         description: 一个分享编程知识和技术教程的个人博客网站，涵盖前端开发、Python编程等内容。
+#         avatar: https://ppkjgzs.top/images/logo.jpeg
+
+# ============================================
+# PAGE TEMPLATES
+# ============================================
+page_templates:
+  friends_column: 2            # 2 columns for friends page
+  tags_style: blur             # blur or cloud
+
+# ============================================
+# CDN
+# ============================================
+cdn:
+  enable: false
+  provider: npmmirror
+  custom_url: 
+
+# ============================================
+# DEVELOPER MODE
+# ============================================
+developer:
+  enable: false

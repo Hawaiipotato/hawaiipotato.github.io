@@ -1,22 +1,27 @@
 {
-  "name": "blog-publisher",
-  "version": "1.0.0",
-  "description": "博客本地发布器",
-  "main": "server.js",
+  "name": "hexo-site",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
-    "start": "node server.js",
-    "dev": "node server.js"
+    "build": "hexo generate",
+    "clean": "hexo clean",
+    "deploy": "hexo deploy",
+    "server": "hexo server"
+  },
+  "hexo": {
+    "version": "8.1.1"
   },
   "dependencies": {
-    "cors": "^2.8.5",
-    "express": "^4.18.2",
-    "fs-extra": "^11.1.1"
-  },
-  "keywords": [
-    "blog",
-    "publisher",
-    "markdown"
-  ],
-  "author": "Potato",
-  "license": "MIT"
+    "hexo": "^8.0.0",
+    "hexo-generator-archive": "^2.0.0",
+    "hexo-generator-category": "^2.0.0",
+    "hexo-generator-index": "^4.0.0",
+    "hexo-generator-tag": "^2.0.0",
+    "hexo-renderer-ejs": "^2.0.0",
+    "hexo-renderer-marked": "^7.0.0",
+    "hexo-renderer-stylus": "^3.0.1",
+    "hexo-server": "^3.0.0",
+    "hexo-theme-landscape": "^1.0.0",
+    "js-yaml": "^4.1.1"
+  }
 }

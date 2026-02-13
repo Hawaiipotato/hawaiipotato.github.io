@@ -1,0 +1,85 @@
+<% if (
+        theme.comment.system==='giscus' &&
+        theme.comment.config.giscus.repo &&
+        theme.comment.config.giscus.repo_id &&
+        theme.comment.config.giscus.category_id
+    ) { %>
+    <div id="giscus-container"></div>
+    <script <%= theme.global.single_page === true && 'data-swup-reload-script' %> defer>
+        // Giscus theme configuration from _config.redefine.yml
+        const giscusLightTheme = '<%= theme.comment.config.giscus.theme?.light || 'light' %>';
+        const giscusDarkTheme = '<%= theme.comment.config.giscus.theme?.dark || 'dark_dimmed' %>';
+        
+        // Get current theme from Redefine's theme system
+        function getCurrentGiscusTheme() {
+            const html = document.documentElement;
+            const savedTheme = localStorage.getItem('theme');
+            const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const currentTheme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
+            return currentTheme === 'dark' ? giscusDarkTheme : giscusLightTheme;
+        }
+        
+        // Update giscus theme when page theme changes
+        function updateGiscusTheme() {
+            const iframe = document.querySelector('iframe.giscus-frame');
+            if (iframe) {
+                const theme = getCurrentGiscusTheme();
+                iframe.contentWindow.postMessage(
+                    { giscus: { setConfig: { theme: theme } } },
+                    'https://giscus.app'
+                );
+            }
+        }
+        
+        async function loadGiscus() {
+            const giscusConfig = {
+                'src': 'https://giscus.app/client.js',
+                'data-repo': '<%= theme.comment.config.giscus.repo %>',
+                'data-repo-id': '<%= theme.comment.config.giscus.repo_id %>',
+                'data-category': '<%= theme.comment.config.giscus.category %>',
+                'data-category-id': '<%= theme.comment.config.giscus.category_id %>',
+                'data-mapping': '<%= theme.comment.config.giscus.mapping || 'pathname' %>',
+                'data-strict': '<%= theme.comment.config.giscus.strict || '0' %>',
+                'data-reactions-enabled': '<%= theme.comment.config.giscus.reactions_enabled || '1' %>',
+                'data-emit-metadata': '<%= theme.comment.config.giscus.emit_metadata || '0' %>',
+                'data-theme': getCurrentGiscusTheme(),
+                'data-lang': '<%= theme.comment.config.giscus.lang || 'zh-CN' %>',
+                'data-input-position': '<%= theme.comment.config.giscus.input_position || 'top' %>',
+                'data-loading': '<%= theme.comment.config.giscus.loading || 'lazy' %>',
+                'crossorigin': 'anonymous',
+                'async': true
+            }
+            const giscusScript = document.createElement('script');
+            for (const key in giscusConfig) {
+                giscusScript.setAttribute(key, giscusConfig[key]);
+            }
+            document.getElementById('giscus-container').appendChild(giscusScript);
+        }
+        
+        // Listen for theme changes
+        function initGiscusThemeWatcher() {
+            // Watch for html data-theme attribute changes
+            const observer = new MutationObserver((mutations) => {
+                mutations.forEach((mutation) => {
+                    if (mutation.attributeName === 'data-theme') {
+                        updateGiscusTheme();
+                    }
+                });
+            });
+            observer.observe(document.documentElement, { attributes: true });
+        }
+        
+        if ('<%= theme.global.single_page %>') {
+            let loadGiscusTimeout = setTimeout(() => {
+                loadGiscus();
+                initGiscusThemeWatcher();
+                clearTimeout(loadGiscusTimeout);
+            }, 1000);
+        } else {
+            document.addEventListener('DOMContentLoaded', () => {
+                loadGiscus();
+                initGiscusThemeWatcher();
+            });
+        }
+    </script>
+<% } %>

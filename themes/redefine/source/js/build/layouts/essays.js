@@ -1,0 +1,1 @@
+function e(){const e=document.querySelectorAll(".essay-date");e&&e.forEach((function(e){const t=e.getAttribute("data-date"),n=config.language||"en",o=moment(t).locale(n).calendar();e.textContent=o}))}try{swup.hooks.on("page:view",e)}catch(e){console.error(e)}document.addEventListener("DOMContentLoaded",e);

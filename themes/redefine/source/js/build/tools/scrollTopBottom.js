@@ -1,0 +1,1 @@
+export default()=>{const o=document.querySelector(".tool-scroll-to-top"),t=document.querySelector(".tool-scroll-to-bottom"),e=()=>{window.scrollTo({top:0,behavior:"smooth"})},l=()=>{const o=document.body.scrollHeight;window.scrollTo({top:o,behavior:"smooth"})};o.addEventListener("click",e),t.addEventListener("click",l)};
