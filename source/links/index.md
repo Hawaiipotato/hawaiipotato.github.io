@@ -30,7 +30,7 @@ date: 2026-02-12 12:00:00
       <span class="partner-label-custom">兄弟站点</span>
       <span class="partner-label-custom">个人博客</span>
     </div>
-    <div class="partner-description-custom">何不乘风去</div>
+    <div class="partner-description-custom">不如吃茶去</div>
     <a href="https://blog.qiusyan.top" target="_blank" class="partner-link-btn">访问网站</a>
   </div>
 

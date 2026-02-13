@@ -7,7 +7,7 @@
 # ============================================
 info:
   title: "Potato's Blog"
-  subtitle: ""
+  subtitle: "诗酒趁年华"
   author: Potato
   url: https://hawaiipotato.github.io
 
@@ -15,7 +15,7 @@ info:
 # IMAGE CONFIGURATION
 # ============================================
 defaults:
-  favicon: /images/redefine-favicon.svg
+  favicon: /images/favicon.ico
   logo: 
   avatar: /images/cathead.jpg  # Will use blog2 avatar
 
@@ -157,7 +157,7 @@ home:
     enable: true
     position: left
     first_item: menu
-    announcement: 
+    announcement: "何不乘风去" 
     show_on_mobile: true
     links:
   article_date_format: auto
