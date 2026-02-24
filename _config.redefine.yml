@@ -303,7 +303,7 @@ plugins:
     listFolded: false
     listMaxHeight: '340px'
     storageName: 'metingjs'
-    api: 'https://api.xingzhige.com/meting'
+    api: ''
   mermaid:
     enable: false              # Disabled for now
     version: "11.4.1"
