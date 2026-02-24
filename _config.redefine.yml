@@ -281,7 +281,7 @@ plugins:
   feed:
     enable: false
   aplayer:
-    enable: true               # Keep Aplayer enabled (theme built-in)
+    enable: false              # 使用 MetingJS 时关闭原始 APlayer
     type: fixed                # fixed or mini
     audios: []                 # Empty - using MetingJs instead of manual audios
   # MetingJs 配置
