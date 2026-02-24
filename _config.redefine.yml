@@ -284,13 +284,13 @@ plugins:
     enable: true               # Keep Aplayer enabled (theme built-in)
     type: fixed                # fixed or mini
     audios: []                 # Empty - using MetingJs instead of manual audios
-  # MetingJs 配置（已禁用，如需启用请参考 source/_data/music-player-examples.md）
+  # MetingJs 配置
   meting:
-    enable: false              # 当前禁用，将来可参考示例文档启用
-    global_sticky_enable: false
-    id: ''
+    enable: true              # 启用 MetingJS
+    global_sticky_enable: true
+    id: '5221167'
     server: 'netease'
-    type: 'playlist'
+    type: 'song'
     playerType: 'fixed'
     preload: 'auto'
     loop: 'all'
