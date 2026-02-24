@@ -296,14 +296,14 @@ plugins:
     loop: 'all'
     order: 'list'
     theme: '#4A90D9'
-    autoplay: false
+    autoplay: true
     auto: ''
     mutex: true
     lrcType: 0
     listFolded: false
     listMaxHeight: '340px'
     storageName: 'metingjs'
-    api: ''
+    api: 'https://api.xingzhige.com/meting'
   mermaid:
     enable: false              # Disabled for now
     version: "11.4.1"
