@@ -158,6 +158,17 @@ export default function initUtils() {
       }
     },
 
+    // Get player element - supports both APlayer (id="aplayer") and MetingJS (.aplayer)
+    getPlayerElement() {
+      // Try direct ID first (original APlayer)
+      let player = document.getElementById("aplayer");
+      if (player) return player;
+      // Try class selector (MetingJS creates .aplayer element)
+      player = document.querySelector(".aplayer");
+      if (player) return player;
+      return null;
+    },
+
     updateAutoHideTools() {
       const y = window.scrollY;
       const height = document.body.scrollHeight;
@@ -165,7 +176,7 @@ export default function initUtils() {
       const toolList = document.getElementsByClassName(
         "right-side-tools-container",
       );
-      const aplayer = document.getElementById("aplayer");
+      const aplayer = this.getPlayerElement();
 
       for (let i = 0; i < toolList.length; i++) {
         const tools = toolList[i];
