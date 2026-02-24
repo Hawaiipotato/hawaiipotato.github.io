@@ -288,7 +288,7 @@ plugins:
   meting:
     enable: true              # 启用 MetingJS
     global_sticky_enable: false
-    id: '5221167'
+    id: '27961155'
     server: 'netease'
     type: 'song'
     playerType: 'fixed'
