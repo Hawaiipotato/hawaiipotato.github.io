@@ -269,8 +269,9 @@ footer:
 # ============================================
 inject:
   enable: true
-  head: 
+  head:
     - <link rel="stylesheet" href="/css/blog2-style.css">
+    - <meta name="google-site-verification" content="wGWTp0WcKiMkfYdMn2EaZuI9xJLL91vDRt-asmIySoY" />
   footer:
     -
 
