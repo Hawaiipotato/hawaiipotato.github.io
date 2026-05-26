@@ -131,6 +131,11 @@
   margin-top: 20px;
 }
 
+.contact-grid {
+  margin-bottom: 28px;
+  padding-bottom: 10px;
+}
+
 .skill-card {
   background: var(--card-bg-light);
   backdrop-filter: blur(20px);
@@ -187,7 +192,7 @@ a.skill-card:hover h4 {
 
 .contact-card {
   animation: contact-card-float 7.8s ease-in-out infinite;
-  translate: 0 0;
+  transform: translate3d(0, 0, 0);
   will-change: transform;
 }
 
@@ -210,11 +215,11 @@ a.skill-card:hover h4 {
 @keyframes contact-card-float {
   0%,
   100% {
-    translate: 0 0;
+    transform: translate3d(0, 0, 0);
   }
 
   50% {
-    translate: 0 -8px;
+    transform: translate3d(0, -8px, 0);
   }
 }
 

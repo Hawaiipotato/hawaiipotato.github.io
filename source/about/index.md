@@ -46,7 +46,7 @@ date: 2026-02-12 12:00:00
 </div>
 
 <h3 class="section-title-custom">联系方式</h3>
-<div class="skills-grid">
+<div class="skills-grid contact-grid">
   <a href="mailto:hawaiipotatoes@gmail.com" class="skill-card contact-card" style="text-decoration: none !important; border-bottom: none !important;">
     <div style="font-size: 2.5rem; margin-bottom: 15px; color: var(--primary-color);">
       <i class="fa-regular fa-envelope"></i>
@@ -70,8 +70,61 @@ date: 2026-02-12 12:00:00
   </a>
 </div>
 
----
+<div class="contact-section-spacer"></div>
+<hr class="about-contact-divider">
 
 <div style="text-align: center; margin-top: 40px; color: var(--second-text-color); font-style: italic;">
   一个开发者的个人空间，记录技术与生活的点滴。
 </div>
+
+<style>
+.page-template-content .contact-grid {
+  margin-bottom: 28px !important;
+  padding-bottom: 10px;
+}
+
+.page-template-content .contact-card {
+  animation: about-contact-float 7.8s ease-in-out infinite !important;
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
+}
+
+.page-template-content .contact-card:nth-child(2) {
+  animation-delay: -2.4s !important;
+}
+
+.page-template-content .contact-card:nth-child(3) {
+  animation-delay: -4.9s !important;
+}
+
+.page-template-content .contact-card:hover {
+  animation-play-state: paused !important;
+  transform: translate3d(0, -5px, 0) !important;
+}
+
+.page-template-content .contact-section-spacer {
+  height: 24px;
+}
+
+.page-template-content .about-contact-divider {
+  margin-top: 0 !important;
+}
+
+@keyframes about-contact-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform: translate3d(0, -8px, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-template-content .contact-card {
+    animation: none !important;
+    will-change: auto;
+  }
+}
+</style>
