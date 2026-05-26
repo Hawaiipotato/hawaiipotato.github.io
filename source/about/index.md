@@ -47,21 +47,21 @@ date: 2026-02-12 12:00:00
 
 <h3 class="section-title-custom">联系方式</h3>
 <div class="skills-grid">
-  <a href="mailto:hawaiipotatoes@gmail.com" class="skill-card" style="text-decoration: none !important; border-bottom: none !important;">
+  <a href="mailto:hawaiipotatoes@gmail.com" class="skill-card contact-card" style="text-decoration: none !important; border-bottom: none !important;">
     <div style="font-size: 2.5rem; margin-bottom: 15px; color: var(--primary-color);">
       <i class="fa-regular fa-envelope"></i>
     </div>
     <h4>电子邮箱</h4>
     <p>hawaiipotatoes@gmail.com</p>
   </a>
-  <a href="https://github.com/Hawaiipotato" target="_blank" class="skill-card" style="text-decoration: none !important; border-bottom: none !important;">
+  <a href="https://github.com/Hawaiipotato" target="_blank" class="skill-card contact-card" style="text-decoration: none !important; border-bottom: none !important;">
     <div style="font-size: 2.5rem; margin-bottom: 15px; color: var(--primary-color);">
       <i class="fa-brands fa-github"></i>
     </div>
     <h4>GitHub</h4>
     <p>@Hawaiipotato</p>
   </a>
-  <a href="https://space.bilibili.com/401682702" target="_blank" class="skill-card" style="text-decoration: none !important; border-bottom: none !important;">
+  <a href="https://space.bilibili.com/401682702" target="_blank" class="skill-card contact-card" style="text-decoration: none !important; border-bottom: none !important;">
     <div style="font-size: 2.5rem; margin-bottom: 15px; color: var(--primary-color);">
       <i class="fa-brands fa-bilibili"></i>
     </div>
