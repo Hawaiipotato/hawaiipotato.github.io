@@ -46,34 +46,19 @@ date: 2026-02-12 12:00:00
 </div>
 
 <h3 class="section-title-custom">联系方式</h3>
-<div class="contact-grid">
-  <a href="mailto:hawaiipotatoes@gmail.com" class="contact-link">
-    <div class="contact-surface">
-      <div class="contact-icon">
-      <i class="fa-regular fa-envelope"></i>
-      </div>
-      <h4>电子邮箱</h4>
-      <p>hawaiipotatoes@gmail.com</p>
-    </div>
-  </a>
-  <a href="https://github.com/Hawaiipotato" target="_blank" class="contact-link">
-    <div class="contact-surface">
-      <div class="contact-icon">
-      <i class="fa-brands fa-github"></i>
-      </div>
-      <h4>GitHub</h4>
-      <p>@Hawaiipotato</p>
-    </div>
-  </a>
-  <a href="https://space.bilibili.com/401682702" target="_blank" class="contact-link">
-    <div class="contact-surface">
-      <div class="contact-icon">
-      <i class="fa-brands fa-bilibili"></i>
-      </div>
-      <h4>哔哩哔哩</h4>
-      <p>Hawaiipotato的个人空间</p>
-    </div>
-  </a>
+<div class="skills-grid contact-grid">
+  <div class="skill-card contact-action" role="link" tabindex="0" data-href="mailto:hawaiipotatoes@gmail.com">
+    <h4>电子邮箱</h4>
+    <p>hawaiipotatoes@gmail.com</p>
+  </div>
+  <div class="skill-card contact-action" role="link" tabindex="0" data-href="https://github.com/Hawaiipotato">
+    <h4>GitHub</h4>
+    <p>@Hawaiipotato</p>
+  </div>
+  <div class="skill-card contact-action" role="link" tabindex="0" data-href="https://space.bilibili.com/401682702">
+    <h4>哔哩哔哩</h4>
+    <p>Hawaiipotato的个人空间</p>
+  </div>
 </div>
 
 <div class="contact-section-spacer"></div>
@@ -85,92 +70,17 @@ date: 2026-02-12 12:00:00
 
 <style>
 .page-template-content .contact-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-  margin-top: 20px;
   margin-bottom: 28px !important;
   padding-bottom: 10px;
 }
 
-.page-template-content a.contact-link,
-.page-template-content a.contact-link:hover,
-.page-template-content a.contact-link:focus,
-.page-template-content a.contact-link:active {
-  display: block;
-  padding: 0;
-  text-decoration: none !important;
-  border-bottom: 0 !important;
-  color: inherit;
-  outline: 0;
+.page-template-content .contact-action {
+  cursor: pointer;
 }
 
-.page-template-content .contact-link *,
-.page-template-content .contact-link:hover * {
-  text-decoration: none !important;
-  border-bottom: 0 !important;
-}
-
-.page-template-content .contact-surface {
-  min-height: 176px;
-  padding: 30px;
-  text-align: center;
-  background: var(--card-bg-light);
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-card);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  animation: about-contact-surface-float 8.4s ease-in-out infinite;
-  transform: translate3d(0, 0, 0);
-  transition: box-shadow var(--transition-normal), border-color var(--transition-normal);
-  will-change: transform;
-}
-
-.page-template-content .contact-link:nth-child(2) .contact-surface {
-  animation-delay: -2.6s;
-}
-
-.page-template-content .contact-link:nth-child(3) .contact-surface {
-  animation-delay: -5.2s;
-}
-
-.page-template-content .contact-link:hover .contact-surface {
-  animation-play-state: paused;
-  box-shadow: var(--shadow-card-hover);
-  border-color: var(--primary-color);
-}
-
-.page-template-content .contact-icon {
-  font-size: 2.5rem;
-  line-height: 1;
-  margin-bottom: 15px;
-  color: var(--primary-color);
-}
-
-.page-template-content .contact-surface h4 {
-  margin: 0 0 12px 0;
-  color: var(--primary-color);
-  font-size: 1.1rem;
-  font-weight: 600;
-}
-
-.page-template-content .contact-surface p {
-  margin: 0;
-  color: var(--second-text-color);
-  font-size: 0.95rem;
-  overflow-wrap: anywhere;
-}
-
-.dark .page-template-content .contact-surface {
-  background: var(--card-bg-dark);
-  box-shadow: var(--shadow-card-dark);
-  border-color: rgba(255, 255, 255, 0.08);
-}
-
-.dark .page-template-content .contact-link:hover .contact-surface {
-  box-shadow: var(--shadow-card-dark-hover);
-  border-color: rgba(59, 130, 246, 0.5);
+.page-template-content .contact-action:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 4px;
 }
 
 .page-template-content .contact-section-spacer {
@@ -180,22 +90,21 @@ date: 2026-02-12 12:00:00
 .page-template-content .about-contact-divider {
   margin-top: 0 !important;
 }
-
-@keyframes about-contact-surface-float {
-  0%,
-  100% {
-    transform: translate3d(0, 0, 0);
-  }
-
-  50% {
-    transform: translate3d(0, -10px, 0);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .page-template-content .contact-surface {
-    animation: none !important;
-    will-change: auto;
-  }
-}
 </style>
+
+<script>
+document.querySelectorAll('.contact-action').forEach(function (card) {
+  var open = function () {
+    var href = card.getAttribute('data-href');
+    if (href) window.location.href = href;
+  };
+
+  card.addEventListener('click', open);
+  card.addEventListener('keydown', function (event) {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      open();
+    }
+  });
+});
+</script>
