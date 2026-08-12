@@ -1,6 +1,6 @@
 ---
 title: 从电脑到AI：技术门槛的一点思考
-date: 2026-07-04 00:00:00
+date: 2026-07-04 19:20:00
 author: Potato
 tags:
   - AI

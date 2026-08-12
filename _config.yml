@@ -80,7 +80,9 @@ meta_generator: true
 date_format: YYYY-MM-DD
 time_format: HH:mm:ss
 ## updated_option supports 'mtime', 'date', 'empty'
-updated_option: 'mtime'
+# Do not derive article updates from filesystem mtimes. Posts may still set
+# an explicit `updated` value in frontmatter when a real revision matters.
+updated_option: 'empty'
 
 # Pagination
 ## Set per_page to 0 to disable pagination

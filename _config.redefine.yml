@@ -38,8 +38,8 @@ global:
       url: https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/style.css
     english:
       enable: true
-      family: "Maple Mono"
-      url: https://cdn.jsdelivr.net/npm/maple-mono@1.0.0/dist/maple-mono-regular/woff2/style.css
+      family: "Maple Mono CN"
+      url: https://cdn.jsdelivr.net/npm/@mogeko/maple-mono-cn@7.9.0/dist/font/result.css
     title:
       enable: false
   content_max_width: 1000px

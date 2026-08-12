@@ -1,6 +1,6 @@
 ---
 title: 薯のAI模型之旅
-date: 2026-05-26 20:45:23
+date: 2026-05-26 20:45:00
 author: Potato
 tags:
   - AI
