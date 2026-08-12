@@ -541,7 +541,7 @@ html[data-theme="light"] .highlight .operator { color: #bb9af7 !important; }
 html[data-theme="light"] .highlight .punctuation { color: #9abdf5 !important; }
 
 code, pre, .highlight {
-    font-family: "Maple Mono", "JetBrains Mono", "Fira Code", monospace !important;
+    font-family: "Maple Mono CN", "JetBrains Mono", "Fira Code", monospace !important;
 }
 
 html {
