@@ -1,90 +1,64 @@
-// 从主题配置中获取 meting 配置
 const metingConfig = theme.plugins.meting;
 console.log('Meting Config:', metingConfig);
 
-// 初始化播放器配置的函数
-function initMetingPlayer() {
-    // 检查必选参数
+async function initMetingPlayer() {
     if (!metingConfig.id || !metingConfig.server || !metingConfig.type) {
-        console.error('Missing required parameters:', {
-            id: metingConfig.id,
-            server: metingConfig.server,
-            type: metingConfig.type
-        });
+        console.error('Missing required Meting parameters:', metingConfig);
         return;
     }
 
-    // 创建 meting-js 元素
-    const metingElement = document.createElement('meting-js');
-    
-    // 设置必选属性
-    metingElement.setAttribute('server', metingConfig.server);
-    metingElement.setAttribute('type', metingConfig.type);
-    metingElement.setAttribute('id', metingConfig.id);
-
-    // 根据播放器类型设置 fixed 或 mini
-    if (metingConfig.playerType === 'fixed') {
-        metingElement.setAttribute('fixed', 'true');
-    } else if (metingConfig.playerType === 'mini') {
-        metingElement.setAttribute('mini', 'true');
-    }
-
-    // 设置其他可选属性
-    if (metingConfig.autoplay !== undefined) {
-        metingElement.setAttribute('autoplay', metingConfig.autoplay);
-    }
-    if (metingConfig.auto) {
-        metingElement.setAttribute('auto', metingConfig.auto);
-    }
-    if (metingConfig.theme !== undefined) {
-        metingElement.setAttribute('theme', metingConfig.theme);
-    }
-    if (metingConfig.loop !== undefined) {
-        metingElement.setAttribute('loop', metingConfig.loop);
-    }
-    if (metingConfig.order !== undefined) {
-        metingElement.setAttribute('order', metingConfig.order);
-    }
-    if (metingConfig.preload !== undefined) {
-        metingElement.setAttribute('preload', metingConfig.preload);
-    }
-    if (metingConfig.volume !== undefined) {
-        metingElement.setAttribute('volume', metingConfig.volume);
-    }
-    if (metingConfig.mutex !== undefined) {
-        metingElement.setAttribute('mutex', metingConfig.mutex);
-    }
-    if (metingConfig.lrcType !== undefined) {
-        metingElement.setAttribute('lrc-type', metingConfig.lrcType);
-    }
-    if (metingConfig.listFolded !== undefined) {
-        metingElement.setAttribute('list-folded', metingConfig.listFolded);
-    }
-    if (metingConfig.listMaxHeight !== undefined) {
-        metingElement.setAttribute('list-max-height', metingConfig.listMaxHeight);
-    }
-    if (metingConfig.storageName !== undefined) {
-        metingElement.setAttribute('storage-name', metingConfig.storageName);
-    }
-    if (metingConfig.api) {
-        metingElement.setAttribute('api', metingConfig.api);
-    }
-    if (metingConfig.auth) {
-        metingElement.setAttribute('auth', metingConfig.auth);
-    }
-
-    // 获取并清空 meting-container 容器
     const apContainer = document.getElementById('meting-container');
-    if (apContainer) {
+    if (!apContainer) return;
+    const apiTemplate = metingConfig.api ||
+        'https://api.i-meto.com/meting/api?server=:server&type=:type&id=:id&r=:r';
+    const url = apiTemplate.replace(':server', encodeURIComponent(metingConfig.server))
+        .replace(':type', encodeURIComponent(metingConfig.type))
+        .replace(':id', encodeURIComponent(metingConfig.id))
+        .replace(':auth', encodeURIComponent(metingConfig.auth || ''))
+        .replace(':r', Math.random());
+    try {
+        const response = await fetch(url);
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        const payload = await response.json();
+        const audios = (Array.isArray(payload) ? payload : [payload])
+            .filter((audio) => audio && audio.url)
+            .map((audio) => ({
+                name: audio.title || audio.name || 'Unknown title',
+                artist: audio.author || audio.artist || 'Unknown artist',
+                url: audio.url,
+                cover: audio.pic || audio.cover,
+                lrc: audio.lrc || ''
+            }));
+        if (!audios.length) throw new Error('No playable Meting songs were loaded');
         apContainer.innerHTML = '';
-        // 将 meting-js 元素添加到容器中
-        apContainer.appendChild(metingElement);
+        const playerContainer = document.createElement('div');
+        playerContainer.style.width = 'min(400px, calc(100vw - 30px))';
+        apContainer.appendChild(playerContainer);
+        new APlayer({
+            container: playerContainer,
+            audio: audios,
+            fixed: metingConfig.playerType === 'fixed',
+            mini: metingConfig.playerType === 'mini',
+            autoplay: metingConfig.autoplay,
+            theme: metingConfig.theme,
+            loop: metingConfig.loop,
+            order: metingConfig.order,
+            preload: metingConfig.preload,
+            volume: metingConfig.volume,
+            mutex: metingConfig.mutex,
+            lrcType: metingConfig.lrcType ?? 3,
+            listFolded: metingConfig.listFolded,
+            listMaxHeight: metingConfig.listMaxHeight,
+            storageName: metingConfig.storageName
+        });
+        if (metingConfig.playerType === 'fixed') {
+            playerContainer.querySelector('.aplayer-info').style.display = 'block';
+        }
+    } catch (error) {
+        console.error(`Failed to load Meting playlist ${metingConfig.id}:`, error);
     }
-
-    console.log('Created meting element:', metingElement.outerHTML);
 }
 
-// 确保 DOM 加载完成后再执行初始化
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initMetingPlayer);
 } else {

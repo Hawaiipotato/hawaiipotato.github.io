@@ -289,18 +289,19 @@ plugins:
   meting:
     enable: true              # 启用 MetingJS
     global_sticky_enable: true
-    id: '27961155'
+    id: '7470677283'
     server: 'netease'
-    type: 'song'
+    type: 'playlist'
     playerType: 'fixed'
     preload: 'auto'
     loop: 'all'
     order: 'list'
     theme: '#4A90D9'
     autoplay: true
+    volume: 0.001
     auto: ''
     mutex: true
-    lrcType: 0
+    lrcType: 3
     listFolded: false
     listMaxHeight: '340px'
     storageName: 'metingjs'

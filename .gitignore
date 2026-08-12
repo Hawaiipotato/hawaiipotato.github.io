@@ -35,3 +35,6 @@ yarn-error.log*
 # Optional
 .cache/
 .temp/
+
+# Local planning notes
+future-plans.md
