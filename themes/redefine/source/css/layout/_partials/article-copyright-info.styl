@@ -14,16 +14,19 @@
     margin-left 10px
 
     li
+      display grid
+      grid-template-columns 5em minmax(0, 1fr)
+      column-gap 0.35em
       margin-bottom 5px
-      overflow hidden
-      text-overflow ellipsis
       white-space nowrap
       color var(--default-text-color)
 
       > strong
-        display inline-block
-        width 5em
-        text-align right
+        text-align left
+
+      > .value
+        overflow hidden
+        text-overflow ellipsis
 
       .license
         font-weight bold

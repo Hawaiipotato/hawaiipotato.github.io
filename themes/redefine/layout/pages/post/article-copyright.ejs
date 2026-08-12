@@ -1,18 +1,18 @@
 <div class="article-copyright-info-container">
     <ul>
-        <li><strong><%- __('copyright.title') %>:</strong> <%= page.title %></li>
-        <li><strong><%- __('copyright.author') %>:</strong> <%=(typeof page.author === "string" && (page.author)) || page.author?.name || theme.info.author || config.author %></li>
-        <li><strong><%- __('copyright.create_time') %>:</strong> <%= date(page.date, `${config.date_format} ${config.time_format}`) %></li>
+        <li><strong><%- __('copyright.title') %>:</strong><span class="value"><%= page.title %></span></li>
+        <li><strong><%- __('copyright.author') %>:</strong><span class="value"><%=(typeof page.author === "string" && (page.author)) || page.author?.name || theme.info.author || config.author %></span></li>
+        <li><strong><%- __('copyright.create_time') %>:</strong><span class="value"><%= date(page.date, `${config.date_format} ${config.time_format}`) %></span></li>
         <% if (page.updated && page.updated !== page.date) { %>
             <li>
-                <strong><%- __('copyright.update_time') %>:</strong> <%= date(page.updated, `${config.date_format} ${config.time_format}`) %>
+                <strong><%- __('copyright.update_time') %>:</strong><span class="value"><%= date(page.updated, `${config.date_format} ${config.time_format}`) %></span>
             </li>
         <% } %>
         <li>
-            <strong><%- __('copyright.link') %>:</strong> <%= getPostUrl((theme.info.url || config.url), page.path) %>
+            <strong><%- __('copyright.link') %>:</strong><span class="value"><%= getPostUrl((theme.info.url || config.url), page.path) %></span>
         </li>
         <li>
-            <strong><%- __('copyright.license_title') %>:</strong>
+            <strong><%- __('copyright.license_title') %>:</strong><span class="value">
             <%
             const licenseMap = {
                 'all_rights_reserved': {
@@ -60,6 +60,7 @@
             <% } else { %>
                 <%- licenseMap[licenseType].label %>
             <% } %>
+            </span>
         </li>
     </ul>
 </div>
