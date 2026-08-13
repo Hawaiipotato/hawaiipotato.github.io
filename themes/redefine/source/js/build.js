@@ -6,10 +6,12 @@ const glob = require("glob-promise");
 const THEME_ROOT = path.join(__dirname, "../..");
 const SOURCE_DIR = path.join(THEME_ROOT, "source/js");
 const BUILD_DIR = path.join(THEME_ROOT, "source/js/build");
+const SOURCE_GLOB_DIR = SOURCE_DIR.replace(/\\/g, "/");
+const BUILD_GLOB_DIR = BUILD_DIR.replace(/\\/g, "/");
 const IGNORE_PATTERNS = [
-  path.join(SOURCE_DIR, "libs/**"),
-  path.join(BUILD_DIR, "**"),
-  path.join(SOURCE_DIR, "build.js"),
+  `${SOURCE_GLOB_DIR}/libs/**`,
+  `${BUILD_GLOB_DIR}/**`,
+  `${SOURCE_GLOB_DIR}/build.js`,
 ];
 
 const minifyOptions = {
@@ -28,10 +30,6 @@ const minifyOptions = {
     comments: false,
   },
   module: true,
-  sourceMap: {
-    filename: "source-map",
-    url: "source-map.map",
-  },
 };
 
 async function ensureDirectoryExists(dir) {
@@ -63,27 +61,12 @@ async function processFile(file) {
     const buildPath = path.join(BUILD_DIR, relativePath);
     const buildDirPath = path.dirname(buildPath);
 
-    // Update source map options for this specific file
-    const fileSpecificOptions = {
-      ...minifyOptions,
-      sourceMap: {
-        ...minifyOptions.sourceMap,
-        filename: path.basename(file),
-        url: `${path.basename(file)}.map`,
-      },
-    };
-
-    const minified = await minify(code, fileSpecificOptions);
+    const minified = await minify(code, minifyOptions);
 
     await ensureDirectoryExists(buildDirPath);
 
     // Write minified code
     await fs.writeFile(buildPath, minified.code);
-
-    // Write source map if it exists
-    if (minified.map) {
-      await fs.writeFile(`${buildPath}.map`, minified.map);
-    }
 
     console.log(`✓ Minified ${file} -> ${buildPath}`);
   } catch (err) {
@@ -97,10 +80,10 @@ async function minifyJS() {
     await ensureDirectoryExists(BUILD_DIR);
 
     // Get lib files to copy
-    const libFiles = await glob(`${SOURCE_DIR}/libs/**/*.js`);
+    const libFiles = await glob(`${SOURCE_GLOB_DIR}/libs/**/*.js`);
     
     // Get JS files to minify (excluding libs and other ignored patterns)
-    const files = await glob(`${SOURCE_DIR}/**/*.js`, {
+    const files = await glob(`${SOURCE_GLOB_DIR}/**/*.js`, {
       ignore: IGNORE_PATTERNS,
     });
 

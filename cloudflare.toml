@@ -2,7 +2,7 @@ name = "hawaiipotato-github-io"
 compatibility_date = "2026-02-12"
 
 [build]
-  command = "npm install && cd themes/redefine && npm install @tailwindcss/cli && npm run build && cd ../.. && npm run build"
+  command = "npm install && cd themes/redefine && npm install && cd ../.. && npm run build"
   cwd = "."
   watch_dir = "."
 

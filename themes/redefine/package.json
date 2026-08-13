@@ -35,12 +35,13 @@
   },
   "homepage": "https://redefine.ohevan.com",
   "devDependencies": {
+    "@tailwindcss/cli": "4.1.18",
     "eslint": "^8.47.0",
     "glob-promise": "^6.0.7",
     "husky": "^9.1.6",
     "postcss": "^8.4.47",
     "standard-version": "^9.5.0",
-    "tailwindcss": "^4.1.11",
+    "tailwindcss": "4.1.18",
     "terser": "^5.36.0"
   }
 }

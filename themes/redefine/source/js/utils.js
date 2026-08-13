@@ -8,6 +8,27 @@ export const navigationState = {
   isNavigating: false,
 };
 
+let windowScrollRegistered = false;
+let bannerBlurTimer;
+let activeUtils;
+
+function updateAutoHideTools() {
+  const y = window.scrollY;
+  const height = document.body.scrollHeight;
+  const windowHeight = window.innerHeight;
+  const hideAtHomeTop = y <= 100 && location.pathname === config.root;
+  const hideAtPageBottom = y + windowHeight >= height - 20;
+  const shouldHide = hideAtHomeTop || hideAtPageBottom;
+
+  document
+    .querySelectorAll(".right-side-tools-container")
+    .forEach((tools) => tools.classList.toggle("hide", shouldHide));
+
+  document
+    .querySelector(".aplayer#aplayer")
+    ?.classList.toggle("hide", shouldHide);
+}
+
 export default function initUtils() {
   const utils = {
     html_root_dom: document.querySelector("html"),
@@ -100,17 +121,22 @@ export default function initUtils() {
 
     // register window scroll event
     registerWindowScroll() {
+      if (windowScrollRegistered) return;
+
       window.addEventListener("scroll", () => {
-        this.updateScrollStyle();
-        this.updateTOCScroll();
-        this.updateNavbarShrink();
-        // this.updateHomeBannerBlur();
-        this.updateAutoHideTools();
+        activeUtils.updateScrollStyle();
+        activeUtils.updateTOCScroll();
+        activeUtils.updateNavbarShrink();
+        updateAutoHideTools();
+
+        clearTimeout(bannerBlurTimer);
+        bannerBlurTimer = setTimeout(
+          () => activeUtils.updateHomeBannerBlur(),
+          20,
+        );
       });
-      window.addEventListener(
-        "scroll",
-        this.debounce(() => this.updateHomeBannerBlur(), 20),
-      );
+      window.addEventListener("redefine:aplayer-ready", updateAutoHideTools);
+      windowScrollRegistered = true;
     },
 
     updateTOCScroll() {
@@ -154,38 +180,6 @@ export default function initUtils() {
         } catch (e) {
           // Handle or log the error properly
           console.error("Error updating banner blur:", e);
-        }
-      }
-    },
-
-    updateAutoHideTools() {
-      const y = window.scrollY;
-      const height = document.body.scrollHeight;
-      const windowHeight = window.innerHeight;
-      const toolList = document.getElementsByClassName(
-        "right-side-tools-container",
-      );
-      const aplayer = document.getElementById("meting-container");
-
-      for (let i = 0; i < toolList.length; i++) {
-        const tools = toolList[i];
-        if (y <= 100) {
-          if (location.pathname === config.root) {
-            tools.classList.add("hide");
-            if (aplayer !== null) {
-              aplayer.classList.add("hide");
-            }
-          }
-        } else if (y + windowHeight >= height - 20) {
-          tools.classList.add("hide");
-          if (aplayer !== null) {
-            aplayer.classList.add("hide");
-          }
-        } else {
-          tools.classList.remove("hide");
-          if (aplayer !== null) {
-            aplayer.classList.remove("hide");
-          }
         }
       }
     },
@@ -355,7 +349,9 @@ export default function initUtils() {
     },
   };
 
-  utils.updateAutoHideTools();
+  activeUtils = utils;
+
+  updateAutoHideTools();
 
   // init scroll
   utils.registerWindowScroll();

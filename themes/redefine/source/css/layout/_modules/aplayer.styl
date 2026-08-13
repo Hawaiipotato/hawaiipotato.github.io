@@ -469,44 +469,6 @@ $aplayer-height-lrc= $aplayer-height + $lrc-height - 6
               display inline-block
               margin-left 3px
               cursor pointer !important
-
-              &hover .aplayer-volume-bar-wrap {
-                  height 40px
-              }
-
-              .aplayer-volume-bar-wrap {
-                  position absolute
-                  bottom 15px
-                  right -3px
-                  width 25px
-                  height 0
-                  z-index 99
-                  overflow hidden
-                  transition all .2s ease-in-out
-
-                  &.aplayer-volume-bar-wrap-active {
-                      height 40px
-                  }
-
-                  .aplayer-volume-bar {
-                      position absolute
-                      bottom 0
-                      right 10px
-                      width 5px
-                      height 35px
-                      background #aaa
-                      border-radius 2.5px
-                      overflow hidden
-
-                      .aplayer-volume {
-                          position absolute
-                          bottom 0
-                          right 0
-                          width 5px
-                          transition all 0.1s ease
-                      }
-                  }
-              }
           }
 
           .aplayer-loading-icon {

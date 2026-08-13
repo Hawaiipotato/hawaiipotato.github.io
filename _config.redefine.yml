@@ -282,30 +282,25 @@ plugins:
   feed:
     enable: false
   aplayer:
-    enable: false              # 使用 MetingJS 时关闭原始 APlayer
+    enable: true
     type: fixed                # fixed or mini
-    audios: []                 # Empty - using MetingJs instead of manual audios
-  # MetingJs 配置
-  meting:
-    enable: true              # 启用 MetingJS
-    global_sticky_enable: true
-    id: '7470677283'
-    server: 'netease'
-    type: 'playlist'
-    playerType: 'fixed'
+    playlist:
+      id: '7470677283'
+      server: 'netease'
+      type: 'playlist'
+      api: 'https://api.i-meto.com/meting/api?server=:server&type=:type&id=:id&r=:r'
+    audios: []
     preload: 'auto'
     loop: 'all'
     order: 'list'
     theme: '#4A90D9'
     autoplay: true
-    volume: 0.001
-    auto: ''
+    volume: 0.10
     mutex: true
-    lrcType: 3
+    lrc_type: 3
     listFolded: false
     listMaxHeight: '340px'
-    storageName: 'metingjs'
-    api: ''
+    storage_name: 'redefine-aplayer'
   mermaid:
     enable: false              # Disabled for now
     version: "11.4.1"
