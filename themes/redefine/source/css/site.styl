@@ -1,11 +1,5 @@
-/* ============================================
-   Blog2 Style - Card-based Design Override
-   Glass-Tech Theme for Redefine
-   ============================================ */
+/* Site overlay: about/links cards, Tokyo Night code, scrollbar */
 
-/* ============================================
-   CSS Variables - Blog2 Blue-Tech Style
-   ============================================ */
 :root {
   /* Card backgrounds with glass effect */
   --card-bg-light: rgba(255, 255, 255, 0.85);
@@ -39,7 +33,7 @@
 /* ============================================
    Common Card Base Style
    ============================================ */
-.blog2-card {
+.site-card {
   background: var(--card-bg-light);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
@@ -50,19 +44,19 @@
   box-shadow: var(--shadow-card);
 }
 
-.blog2-card:hover {
+.site-card:hover {
   transform: translateY(-5px);
   box-shadow: var(--shadow-card-hover);
   border-color: var(--primary-color);
 }
 
-.dark .blog2-card {
+.dark .site-card {
   background: var(--card-bg-dark);
   box-shadow: var(--shadow-card-dark);
   border-color: rgba(255, 255, 255, 0.08);
 }
 
-.dark .blog2-card:hover {
+.dark .site-card:hover {
   box-shadow: var(--shadow-card-dark-hover);
   border-color: rgba(59, 130, 246, 0.5);
 }
@@ -162,6 +156,7 @@
   font-size: 0.95rem;
 }
 
+/* Skill card as link (for contact cards) */
 a.skill-card {
   display: block;
   cursor: pointer;
@@ -185,6 +180,7 @@ a.skill-card:hover h4 {
   color: var(--primary-color);
 }
 
+/* Dark mode styles */
 .dark .skill-card {
   background: var(--card-bg-dark);
   box-shadow: var(--shadow-card-dark);
@@ -246,6 +242,7 @@ a.skill-card:hover h4 {
   box-shadow: var(--shadow-glow);
 }
 
+/* Dark mode styles */
 .dark .interest-tag {
   background: var(--gradient-dark-accent);
   box-shadow: 0 2px 8px rgba(59, 130, 246, 0.25);
@@ -441,6 +438,7 @@ a.skill-card:hover h4 {
   text-decoration: none;
 }
 
+/* Dark mode styles */
 .dark .partner-card-custom {
   background: var(--card-bg-dark);
   box-shadow: var(--shadow-card-dark);
@@ -536,9 +534,6 @@ html[data-theme="light"] .highlight .comment { color: #565f89 !important; }
 html[data-theme="light"] .highlight .operator { color: #bb9af7 !important; }
 html[data-theme="light"] .highlight .punctuation { color: #9abdf5 !important; }
 
-code, pre, .highlight {
-    font-family: "Maple Mono CN", "JetBrains Mono", "Fira Code", monospace !important;
-}
 
 html {
     scroll-behavior: smooth;

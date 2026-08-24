@@ -1,11 +1,16 @@
 const initCopyCode = () => {
-  HTMLElement.prototype.wrap = function (wrapper) {
-    this.parentNode.insertBefore(wrapper, this);
-    this.parentNode.removeChild(this);
-    wrapper.appendChild(this);
-  };
+  if (!HTMLElement.prototype.wrap) {
+    HTMLElement.prototype.wrap = function (wrapper) {
+      this.parentNode.insertBefore(wrapper, this);
+      this.parentNode.removeChild(this);
+      wrapper.appendChild(this);
+    };
+  }
 
   document.querySelectorAll("figure.highlight").forEach((element) => {
+    if (element.parentElement?.classList.contains("highlight-container")) {
+      return;
+    }
     const container = document.createElement("div");
     element.wrap(container);
     container.classList.add("highlight-container");

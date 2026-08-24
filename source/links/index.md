@@ -3,7 +3,7 @@ title: Partners
 date: 2026-02-12 12:00:00
 ---
 
-<div class="blog2-card" style="margin-bottom: 30px;">
+<div class="site-card" style="margin-bottom: 30px;">
   <h3 style="margin-top: 0;">申请友链</h3>
   <p>如果你想交换友链，请通过以下方式联系我：</p>
   <ul>

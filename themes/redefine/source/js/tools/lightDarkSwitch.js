@@ -1,5 +1,7 @@
 import { main } from "../main.js";
 
+let autoTriggerRegistered = false;
+
 const elementCode = ".mermaid";
 
 const saveOriginalData = function () {
@@ -120,6 +122,13 @@ export const ModeToggle = {
   },
 
   initModeToggleButton() {
+    if (
+      !this.modeToggleButton_dom ||
+      this.modeToggleButton_dom.dataset.listenerBound
+    ) {
+      return;
+    }
+    this.modeToggleButton_dom.dataset.listenerBound = "1";
     this.modeToggleButton_dom.addEventListener("click", () => {
       const isDark = document.body.classList.contains("dark-mode");
       isDark ? this.enableLightMode() : this.enableDarkMode();
@@ -127,6 +136,8 @@ export const ModeToggle = {
   },
 
   initModeAutoTrigger() {
+    if (autoTriggerRegistered) return;
+    autoTriggerRegistered = true;
     const isDarkMode = this.isDarkPrefersColorScheme();
     isDarkMode.addEventListener("change", (e) => {
       e.matches ? this.enableDarkMode() : this.enableLightMode();

@@ -22,8 +22,11 @@ function setTabs() {
   });
 }
 
-try {
-  swup.hooks.on("page:view", setTabs);
-} catch (e) {}
+if (!window.__redefineTabsHooked) {
+  window.__redefineTabsHooked = true;
+  try {
+    swup.hooks.on("page:view", setTabs);
+  } catch (e) {}
 
-document.addEventListener("DOMContentLoaded", setTabs);
+  document.addEventListener("DOMContentLoaded", setTabs);
+}

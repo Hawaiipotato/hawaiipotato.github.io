@@ -20,10 +20,21 @@ const initScrollTopBottom = () => {
   };
 
   const initBackToTop = () => {
+    if (!backToTopButton_dom || backToTopButton_dom.dataset.listenerBound) {
+      return;
+    }
+    backToTopButton_dom.dataset.listenerBound = "1";
     backToTopButton_dom.addEventListener("click", backToTop);
   };
 
   const initBackToBottom = () => {
+    if (
+      !backToBottomButton_dom ||
+      backToBottomButton_dom.dataset.listenerBound
+    ) {
+      return;
+    }
+    backToBottomButton_dom.dataset.listenerBound = "1";
     backToBottomButton_dom.addEventListener("click", backToBottom);
   };
 

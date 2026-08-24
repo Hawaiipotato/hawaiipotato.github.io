@@ -11,7 +11,17 @@ export const config = {
   usrHitokotoAPI: theme.home_banner.subtitle.hitokoto.api,
 };
 
+let typedInstance = null;
+
+function destroyTyped() {
+  if (!typedInstance) return;
+  typedInstance.destroy();
+  typedInstance = null;
+}
+
 export default function initTyped(id) {
+  destroyTyped();
+
   const {
     usrTypeSpeed,
     usrBackSpeed,
@@ -22,8 +32,13 @@ export default function initTyped(id) {
     usrHitokotoAPI,
   } = config;
 
+  if (location.pathname !== config.root || !document.getElementById(id)) {
+    return;
+  }
+
   function typing(dataList) {
-    const st = new Typed("#" + id, {
+    destroyTyped();
+    typedInstance = new Typed("#" + id, {
       strings: [dataList],
       typeSpeed: usrTypeSpeed || 100,
       smartBackspace: usrSmartBackspace || false,
@@ -49,7 +64,8 @@ export default function initTyped(id) {
     // Use subtitle.text array for typing effect
     const sentenceList = [...theme.home_banner.subtitle.text];
     if (sentenceList.length > 0 && document.getElementById(id)) {
-      const st = new Typed("#" + id, {
+      destroyTyped();
+      typedInstance = new Typed("#" + id, {
         strings: sentenceList,
         typeSpeed: usrTypeSpeed || 100,
         smartBackspace: usrSmartBackspace || false,

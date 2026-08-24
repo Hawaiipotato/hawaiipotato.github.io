@@ -180,21 +180,20 @@
     <%- renderCSS('fonts/GeistMono/geist-mono.css') %>
     <%- renderCSS('fonts/Geist/geist.css') %>
     <!--- Font Part-->
-    <% if (theme.home_banner.custom_font.enable) { %>
-        <link href="<%- theme.home_banner.custom_font.url %>" rel="stylesheet">
-    <% } %>
-    <% if (theme.articles.code_block.font.enable) { %>
-        <link href="<%- theme.articles.code_block.font.url %>" rel="stylesheet">
-    <% } %>
-    <% if (theme.global.fonts.chinese.enable) { %>
-        <link href="<%- theme.global.fonts.chinese.url %>" rel="stylesheet">
-    <% } %>
-    <% if (theme.global.fonts.english.enable) { %>
-        <link href="<%- theme.global.fonts.english.url %>" rel="stylesheet">
-    <% } %>
-    <% if (theme.global.fonts.title.enable) { %>
-        <link href="<%- theme.global.fonts.title.url %>" rel="stylesheet">
-    <% } %>
+    <%
+      const fontUrls = [];
+      const addFontUrl = (url) => {
+        if (url && !fontUrls.includes(url)) fontUrls.push(url);
+      };
+      if (theme.home_banner.custom_font.enable) addFontUrl(theme.home_banner.custom_font.url);
+      if (theme.articles.code_block.font.enable) addFontUrl(theme.articles.code_block.font.url);
+      if (theme.global.fonts.chinese.enable) addFontUrl(theme.global.fonts.chinese.url);
+      if (theme.global.fonts.english.enable) addFontUrl(theme.global.fonts.english.url);
+      if (theme.global.fonts.title.enable) addFontUrl(theme.global.fonts.title.url);
+    %>
+    <% fontUrls.forEach((url) => { %>
+        <link href="<%- url %>" rel="stylesheet">
+    <% }) %>
     <% if (theme.global.preloader === true || theme.global.preloader.enable === true) { %>
         <%- renderJS('libs/anime.min.js')%>
     <% } %>

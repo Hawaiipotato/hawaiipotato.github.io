@@ -9,7 +9,7 @@ info:
   title: "Potato's Blog"
   subtitle: "诗酒趁年华"
   author: Potato
-  url: https://hawaiipotato.github.io
+  url: https://hawaiipotato.pages.dev
 
 # ============================================
 # IMAGE CONFIGURATION
@@ -270,10 +270,10 @@ footer:
 inject:
   enable: true
   head:
-    - <link rel="stylesheet" href="/css/blog2-style.css">
     - <meta name="google-site-verification" content="wGWTp0WcKiMkfYdMn2EaZuI9xJLL91vDRt-asmIySoY" />
   footer:
     -
+
 
 # ============================================
 # PLUGINS
@@ -288,7 +288,7 @@ plugins:
       id: '7470677283'
       server: 'netease'
       type: 'playlist'
-      api: 'https://api.i-meto.com/meting/api?server=:server&type=:type&id=:id&r=:r'
+      api: 'https://api.injahow.cn/meting/?server=:server&type=:type&id=:id&r=:r'
     audios: []
     preload: 'auto'
     loop: 'all'

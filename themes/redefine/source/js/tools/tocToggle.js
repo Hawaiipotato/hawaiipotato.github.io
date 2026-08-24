@@ -48,11 +48,4 @@ export function initTocToggle() {
   return TocToggle;
 }
 
-// Event listeners
-try {
-  swup.hooks.on("page:view", () => {
-    initTocToggle();
-  });
-} catch (e) {}
 
-document.addEventListener("DOMContentLoaded", initTocToggle);

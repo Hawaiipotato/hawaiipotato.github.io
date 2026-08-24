@@ -8,7 +8,7 @@ Potato's Blog 是夏威夷土豆的个人空间，记录技术实践、工具折
 
 ## 站点
 
-[https://hawaiipotato.github.io](https://hawaiipotato.github.io)
+[https://hawaiipotato.pages.dev](https://hawaiipotato.pages.dev)
 
 ## 关于作者
 

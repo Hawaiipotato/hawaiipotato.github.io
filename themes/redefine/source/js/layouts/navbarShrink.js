@@ -7,16 +7,18 @@ export const navbarShrink = {
   navbarHeight: 0,
 
   init() {
+    this.navbarDom = document.querySelector(".navbar-container");
+    this.leftAsideDom = document.querySelector(".page-aside");
+    if (!this.navbarDom) return;
     this.navbarHeight = this.navbarDom.getBoundingClientRect().height;
     this.shrink();
     this.togglenavbarDrawerShow();
     this.toggleSubmenu();
-    window.addEventListener("scroll", () => {
-      this.shrink();
-    });
   },
-
   shrink() {
+    this.navbarDom = document.querySelector(".navbar-container");
+    if (!this.navbarDom) return;
+
     const scrollTop =
       document.documentElement.scrollTop || document.body.scrollTop;
 

@@ -15,11 +15,13 @@ function formatEssayDates() {
   });
 }
 
-try {
-  swup.hooks.on("page:view", formatEssayDates);
-} catch (e) {
-  console.error(e);
-}
+if (!window.__redefineEssaysHooked) {
+  window.__redefineEssaysHooked = true;
+  try {
+    swup.hooks.on("page:view", formatEssayDates);
+  } catch (e) {
+    console.error(e);
+  }
 
-// Initial call for the first page load
-document.addEventListener("DOMContentLoaded", formatEssayDates);
+  document.addEventListener("DOMContentLoaded", formatEssayDates);
+}

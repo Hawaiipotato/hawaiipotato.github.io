@@ -10,7 +10,7 @@ date: 2026-02-12 12:00:00
     <div class="about-profile-title">开发者 & 技术爱好者</div>
   </div>
   <div class="about-profile-content">
-    <div class="blog2-card">
+    <div class="site-card">
       <h3 style="margin-top: 0;">个人简介</h3>
       <p>你好！我是 <strong>夏威夷土豆</strong>，一名计算机专业在读学生，正在备考考研。我从小接触电脑，从折腾各种软件到自学编程，对技术始终保持着好奇心。课堂带我走完了 C / C++ / Java / Python 的路线，但真正开始主动选择方向是从拥抱 AI 开始的——从接入 API 入门，到现在用 CLI 工具链配多模型协作，一步步搭出了属于自己的工作方式。</p>
       <p>我相信好的工具值得自己挑选和配置，也相信持续学习的价值。业余时间，我喜欢探索 AI 协作的新玩法、折腾工具链，以及在技术社区里和开发者们交流。</p>

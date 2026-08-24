@@ -11,6 +11,7 @@ export const navigationState = {
 let windowScrollRegistered = false;
 let bannerBlurTimer;
 let activeUtils;
+let activeTOC = null;
 
 function updateAutoHideTools() {
   const y = window.scrollY;
@@ -140,17 +141,12 @@ export default function initUtils() {
     },
 
     updateTOCScroll() {
-      if (
-        theme.articles.toc.enable &&
-        initTOC().hasOwnProperty("updateActiveTOCLink")
-      ) {
-        initTOC().updateActiveTOCLink();
-      }
+      activeTOC?.updateActiveTOCLink?.();
     },
 
     updateNavbarShrink() {
       if (!navigationState.isNavigating) {
-        navbarShrink.init();
+        navbarShrink.shrink();
       }
     },
 
@@ -189,14 +185,14 @@ export default function initUtils() {
       if (theme.global.side_tools && theme.global.side_tools.auto_expand) {
         this.toolsList.classList.add("show");
       }
-      
-      this.toggleButton.addEventListener("click", () => {
-        this.toolsList.classList.toggle("show");
-      });
-    },
 
-    fontAdjPlus_dom: document.querySelector(".tool-font-adjust-plus"),
-    fontAdMinus_dom: document.querySelector(".tool-font-adjust-minus"),
+      if (this.toggleButton && !this.toggleButton.dataset.listenerBound) {
+        this.toggleButton.dataset.listenerBound = "1";
+        this.toggleButton.addEventListener("click", () => {
+          this.toolsList.classList.toggle("show");
+        });
+      }
+    },
     globalFontSizeAdjust() {
       const htmlRoot = this.html_root_dom;
       const fontAdjustPlus = this.fontAdjPlus_dom;
@@ -231,13 +227,20 @@ export default function initUtils() {
         setFontSize(fontSizeLevel);
       }
 
-      fontAdjustPlus.addEventListener("click", increaseFontSize);
-      fontAdjustMinus.addEventListener("click", decreaseFontSize);
+      if (fontAdjustPlus && !fontAdjustPlus.dataset.listenerBound) {
+        fontAdjustPlus.dataset.listenerBound = "1";
+        fontAdjustPlus.addEventListener("click", increaseFontSize);
+      }
+      if (fontAdjustMinus && !fontAdjustMinus.dataset.listenerBound) {
+        fontAdjustMinus.dataset.listenerBound = "1";
+        fontAdjustMinus.addEventListener("click", decreaseFontSize);
+      }
     },
     // go comment anchor
     goComment() {
       this.goComment_dom = document.querySelector(".go-comment");
-      if (this.goComment_dom) {
+      if (this.goComment_dom && !this.goComment_dom.dataset.listenerBound) {
+        this.goComment_dom.dataset.listenerBound = "1";
         this.goComment_dom.addEventListener("click", () => {
           const target = document.querySelector("#comment-anchor");
           if (target) {
@@ -373,6 +376,8 @@ export default function initUtils() {
 
   // set how long ago in home article block
   utils.relativeTimeInHome();
+
+  activeTOC = theme.articles.toc.enable ? initTOC() : null;
 
   // image viewer handle
   imageViewer();

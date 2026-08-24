@@ -49,14 +49,14 @@ export const main = {
     initModeToggle();
     initScrollTopBottom();
     initBookmarkNav();
-    
-    // Typing effect for subtitle (3 sentences loop)
+
     if (
-      theme.home_banner.subtitle.text.length !== 0 &&
-      location.pathname === config.root
+      theme.home_banner.subtitle.text.length !== 0 ||
+      theme.home_banner.subtitle.hitokoto.enable
     ) {
       initTyped("subtitle");
     }
+
 
     if (theme.navbar.search.enable === true) {
       initLocalSearch();

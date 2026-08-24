@@ -105,11 +105,4 @@ export function initTOC() {
   return utils;
 }
 
-// Event listeners
-try {
-  swup.hooks.on("page:view", () => {
-    initTOC();
-  });
-} catch (e) {}
 
-document.addEventListener("DOMContentLoaded", initTOC);

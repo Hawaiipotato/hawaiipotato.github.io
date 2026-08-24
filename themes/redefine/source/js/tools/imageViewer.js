@@ -1,4 +1,10 @@
+let keyListenerController;
+
 export default function imageViewer() {
+  keyListenerController?.abort();
+  keyListenerController = new AbortController();
+  const { signal } = keyListenerController;
+
   let isBigImage = false;
   let scale = 1;
   let isMouseDown = false;
@@ -115,17 +121,13 @@ export default function imageViewer() {
     ".markdown-body img, .masonry-item img, #shuoshuo-content img",
   );
 
-  const escapeKeyListener = (event) => {
-    if (event.key === "Escape" && isBigImage) {
-      isBigImage = false;
-      showHandle(isBigImage);
-      scale = 1;
-      translateX = 0;
-      translateY = 0;
-      targetImg.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
-      // Remove the event listener when the image viewer is closed
-      document.removeEventListener("keydown", escapeKeyListener);
-    }
+  const closeViewer = () => {
+    isBigImage = false;
+    showHandle(isBigImage);
+    scale = 1;
+    translateX = 0;
+    translateY = 0;
+    targetImg.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
   };
 
   if (imgDoms.length > 0) {
@@ -135,36 +137,40 @@ export default function imageViewer() {
         isBigImage = true;
         showHandle(isBigImage);
         targetImg.src = img.src;
-        document.addEventListener("keydown", escapeKeyListener);
       });
     });
 
-    const handleArrowKeys = (event) => {
-      if (!isBigImage) return;
+    document.addEventListener(
+      "keydown",
+      (event) => {
+        if (!isBigImage) return;
 
-      if (event.key === "ArrowUp" || event.key === "ArrowLeft") {
-        currentImgIndex =
-          (currentImgIndex - 1 + imgDoms.length) % imgDoms.length;
-      } else if (event.key === "ArrowDown" || event.key === "ArrowRight") {
-        currentImgIndex = (currentImgIndex + 1) % imgDoms.length;
-      } else {
-        return;
-      }
+        if (event.key === "Escape") {
+          closeViewer();
+          return;
+        }
 
-      const currentImg = imgDoms[currentImgIndex];
-      let newSrc = currentImg.src;
+        if (event.key === "ArrowUp" || event.key === "ArrowLeft") {
+          currentImgIndex =
+            (currentImgIndex - 1 + imgDoms.length) % imgDoms.length;
+        } else if (event.key === "ArrowDown" || event.key === "ArrowRight") {
+          currentImgIndex = (currentImgIndex + 1) % imgDoms.length;
+        } else {
+          return;
+        }
 
-      if (currentImg.hasAttribute("lazyload")) {
-        newSrc = currentImg.getAttribute("data-src");
-        currentImg.src = newSrc;
-        currentImg.removeAttribute("lazyload");
-      }
+        const currentImg = imgDoms[currentImgIndex];
+        let newSrc = currentImg.src;
 
-      targetImg.src = newSrc;
-    };
+        if (currentImg.hasAttribute("lazyload")) {
+          newSrc = currentImg.getAttribute("data-src");
+          currentImg.src = newSrc;
+          currentImg.removeAttribute("lazyload");
+        }
 
-    document.addEventListener("keydown", handleArrowKeys);
-  } else {
-    // console.warn("No images found to attach image viewer functionality.");
+        targetImg.src = newSrc;
+      },
+      { signal },
+    );
   }
 }
