@@ -45,4 +45,6 @@ npm run preview
 
 站名使用 Chillax，正文使用 Georgia／思源宋体，代码使用 Maple Mono CN。思源宋体和 Chillax 随站点提供；Maple Mono CN、Giscus 与 Vercount 使用外部服务。Chillax 来源与作者见 [字体样式](src/styles/main-font.css)，思源宋体分发遵循其 SIL OFL 1.1 许可。
 
-发布前状态、旧实现清理清单和部署切换要求见 [迁移收尾](MIGRATION.md)。
+## 部署
+
+Cloudflare Pages 构建命令为 `npm ci && npm run verify`，输出目录为 `dist`，Node 版本由 `.nvmrc` 指定。GitHub Pages 使用仓库中的 Actions 工作流构建和发布。

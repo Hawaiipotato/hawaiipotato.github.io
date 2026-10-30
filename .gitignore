@@ -33,6 +33,10 @@ yarn-error.log*
 
 # Local planning notes
 future-plans.md
+AGENTS.md
+AGENT.md
+CLAUDE.md
+MIGRATION.md
 
 # Astro output
 dist/
