@@ -1,0 +1,7 @@
+---
+import {dateLabel} from '../lib/content';
+const {posts}=Astro.props;
+const years=[...new Set(posts.map((p:any)=>dateLabel(p.date).slice(0,4)))];
+---
+<nav class="taxonomy"><a href="/categories/">分类</a><a href="/tags/">标签</a></nav>
+{years.map(year=><section><h2 class="archive-year">{year}</h2>{posts.filter((p:any)=>dateLabel(p.date).startsWith(year)).map((p:any)=><div class="archive-item"><time datetime={p.date.toISOString()}>{dateLabel(p.date)}</time><a href={p.url}>{p.title}</a></div>)}</section>)}

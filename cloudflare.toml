@@ -2,9 +2,9 @@ name = "hawaiipotato-github-io"
 compatibility_date = "2026-02-12"
 
 [build]
-  command = "npm install && cd themes/redefine && npm install && cd ../.. && npm run build"
+  command = "npm ci && npm run verify"
   cwd = "."
   watch_dir = "."
 
 [build.environment]
-  NODE_VERSION = "20"
+  NODE_VERSION = "24.19.0"

@@ -23,10 +23,10 @@ categories:
 
 这个博客完全基于静态文件，使用以下技术：
 
-1. **HTML/CSS/JavaScript** - 纯原生实现
-2. **Marked.js** - 用于 Markdown 渲染
-3. **Highlight.js** - 代码高亮
-4. **GitHub Pages** - 免费托管
+1. **Astro / HTML / CSS / JavaScript** - 静态站点实现
+2. **Astro Markdown** - 用于 Markdown 渲染
+3. **Shiki** - 代码高亮
+4. **Cloudflare Pages** - 免费托管
 
 ## 未来的计划
 

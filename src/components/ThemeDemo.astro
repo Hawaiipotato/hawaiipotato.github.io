@@ -1,0 +1,31 @@
+<button class="theme-toggle" type="button" aria-label="当前亮色模式，切换至暗色" title="当前亮色模式，切换至暗色">
+  <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/></svg>
+  <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.8 13.1A9 9 0 0 1 10.9 3.2a9 9 0 1 0 9.9 9.9Z"/></svg>
+</button>
+<script>
+  const button = document.querySelector<HTMLButtonElement>('.theme-toggle')!;
+  function updateLabel() {
+    const dark = document.documentElement.dataset.mode === 'dark';
+    const label = dark ? '当前暗色模式，切换至亮色' : '当前亮色模式，切换至暗色';
+    button.setAttribute('aria-label', label);
+    button.title = label;
+  }
+  button.addEventListener('click', () => {
+    const mode = document.documentElement.dataset.mode === 'dark' ? 'light' : 'dark';
+    document.documentElement.dataset.mode = mode;
+    try { localStorage.setItem('demo-mode', mode); } catch {}
+    updateLabel();
+  });
+  updateLabel();
+  document.addEventListener('theme-update', updateLabel);
+  new MutationObserver(updateLabel).observe(document.documentElement,{attributes:true,attributeFilter:['data-mode']});
+</script>
+<style>
+  .theme-toggle { display: inline-flex; align-items:center; justify-content:center; flex-shrink:0; width:36px; height:36px; padding:7px; border:0; background:transparent; color:var(--ink); cursor:pointer; border-radius:50%; }
+  .theme-toggle:hover { color:var(--primary-color); }
+  .theme-toggle:focus-visible { outline:2px solid var(--primary-color); outline-offset:3px; }
+  svg { width:22px; height:22px; }
+  .moon { display:none; }
+  :global([data-mode="dark"]) .sun { display:none; }
+  :global([data-mode="dark"]) .moon { display:block; }
+</style>

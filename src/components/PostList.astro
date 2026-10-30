@@ -1,0 +1,5 @@
+---
+import {dateLabel} from '../lib/content';
+const {posts}=Astro.props;
+---
+<div class="post-list">{posts.map((p:any,i:number)=><a class="post-row" href={p.url}><span class="number">{String(i+1).padStart(2,'0')}</span><div><div class="meta">{p.categories?.join(' / ')} <span>· {dateLabel(p.date)}</span></div><h2>{p.title}</h2><div class="tags">{p.tags?.map((t:string)=><span>#{t} </span>)}</div></div><span class="arrow">↗</span></a>)}</div>

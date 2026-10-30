@@ -1,0 +1,8 @@
+:root { color-scheme: light; --paper:#f7f5f0; --ink:#252923; --muted:#686b72; --primary-color:#4056a1; --accent:#dce1f4; --line:#d9dae0; --surface:#e9ecf5; --mark:#dce1f4; --second-text-color:var(--muted); }
+:root[data-mode="dark"] { color-scheme:dark; --paper:#191c22; --ink:#e5e5df; --muted:#a8abb4; --primary-color:#e7b65a; --accent:#574627; --line:#393d46; --surface:#2c3039; --mark:#423b2d; }
+a:hover { color:var(--primary-color); }
+a:focus-visible { outline-color:var(--primary-color); }
+.prose a { border-color:var(--primary-color); }
+.prose :not(pre)>code,.partner-label-custom,.interest-tag { background:var(--surface); }
+.prose blockquote { border-color:var(--primary-color); }
+.nav nav { align-items:center; }

@@ -1,0 +1,6 @@
+---
+import Base from "../layouts/Base.astro";
+import PostList from "../components/PostList.astro";
+import {posts} from "../lib/content";
+---
+<Base home><PostList posts={posts.slice(0,10)}/>{posts.length>10&&<nav class="pagination"><a href="/page/2/">下一页 →</a></nav>}</Base>

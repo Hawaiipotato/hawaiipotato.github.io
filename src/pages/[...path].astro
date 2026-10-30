@@ -1,0 +1,31 @@
+---
+import Base from '../layouts/Base.astro';
+import PostList from '../components/PostList.astro';
+import {posts,read,dateLabel,render,cleanLegacyPage} from '../lib/content';
+import Reading from '../components/Reading.astro';
+import Archive from '../components/Archive.astro';
+export function getStaticPaths(){
+ const paths:any[] = posts.map(p=>({params:{path:decodeURI(p.url.slice(1,-1))},props:{post:p}}));
+ for(const page of ['about','links']) paths.push({params:{path:page},props:{page}});
+ paths.push({params:{path:'archives'},props:{listing:posts,heading:'归档'}});
+ const periods=new Set(posts.flatMap(p=>{const d=dateLabel(p.date);return [d.slice(0,4),d.slice(0,7).replace('-','/')]}));
+ for(const period of periods)paths.push({params:{path:`archives/${period}`},props:{listing:posts.filter(p=>dateLabel(p.date).replaceAll('-','/').startsWith(period)),heading:period}});
+ for(const kind of ['tags','categories']) paths.push({params:{path:kind},props:{taxonomy:kind,names:[...new Set(posts.flatMap(p=>p[kind]||[]))],heading:kind==='tags'?'标签':'分类'}});
+ for(let n=2;n<=Math.ceil(posts.length/10);n++)paths.push({params:{path:`page/${n}`},props:{listing:posts.slice((n-1)*10,n*10),heading:'文章',pageNumber:n}});
+ for(const kind of ['tags','categories']) for(const name of new Set(posts.flatMap(p=>p[kind]||[]))) paths.push({params:{path:`${kind}/${name}`},props:{listing:posts.filter(p=>p[kind]?.includes(name)),heading:name}});
+ return paths;
+}
+const {post,page,listing,heading,taxonomy,names,pageNumber}=Astro.props;
+const content=page?read(`source/${page}/index.md`):null;
+const title=post?.title||content?.data.title||heading;
+const original=post?post.body:content?.body||'';
+const result=await render(page?cleanLegacyPage(original):original);
+const html=result.code;
+const index=post?posts.findIndex(p=>p.slug===post.slug):-1;
+---
+<Base title={title} article={!!post}><section class="page-top"><h1>{title}</h1>{post&&<><p class="meta">{dateLabel(post.date)}{post.updated&&` · 更新于 ${dateLabel(post.updated)}`} · {post.words} 字 · {post.minutes} 分钟 · 阅读 <span id="busuanzi_value_page_pv">—</span> · <a href="#comments">评论</a></p><p class="meta">{post.categories?.map((c:string)=><a href={`/categories/${c}/`}>{c} </a>)}{post.tags?.map((t:string)=><a href={`/tags/${t}/`}>#{t} </a>)}</p></>}</section>
+{taxonomy&&<ul class="taxonomy">{names.map((name:string)=><li><a href={`/${taxonomy}/${name}/`}>{name}</a></li>)}</ul>}
+{listing?(Astro.url.pathname.startsWith('/archives')?<Archive posts={listing}/>:<PostList posts={listing}/>):!taxonomy&&<article class="prose" set:html={html}/>}
+{pageNumber&&<nav class="pagination"><a href={pageNumber===2?'/':`/page/${pageNumber-1}/`}>← 上一页</a>{pageNumber<Math.ceil(posts.length/10)&&<a href={`/page/${pageNumber+1}/`}>下一页 →</a>}</nav>}
+{post&&<><aside class="article-end"><p>作者：{post.author||'Potato'}</p><p>本文采用 <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> 许可协议。</p><p>永久链接：<a href={post.url}>{new URL(post.url,Astro.site).href}</a></p><nav class="adjacent" aria-label="相邻文章">{posts[index+1]&&<a href={posts[index+1].url}>上一篇：{posts[index+1].title}</a>}{posts[index-1]&&<a href={posts[index-1].url}>下一篇：{posts[index-1].title}</a>}</nav></aside><Reading headings={result.metadata.headings.filter((h:any)=>h.depth<=3)}/></>}
+</Base>

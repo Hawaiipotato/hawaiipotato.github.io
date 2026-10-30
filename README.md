@@ -27,3 +27,22 @@ Potato's Blog 是夏威夷土豆的个人空间，记录技术实践、工具折
 - Email: [hawaiipotatoes@gmail.com](mailto:hawaiipotatoes@gmail.com)
 - GitHub: [@Hawaiipotato](https://github.com/Hawaiipotato)
 - Bilibili: [Hawaiipotato 的个人空间](https://space.bilibili.com/401682702)
+
+## 本地开发
+
+使用 Node.js 24.19.0 或更新版本，版本记录在 `.nvmrc`。
+
+```sh
+npm ci
+npm run dev
+npm run verify
+npm run preview
+```
+
+`verify` 运行内容回归测试、静态构建及链接／资源／锚点检查。Astro 构建产物位于 `dist/`。
+
+文章位于 `source/_posts/`；关于、友链位于 `source/about/` 和 `source/links/`。日期按上海时区解析，仅显式填写 `updated` 时展示更新时间。页面组件与交互位于 `src/`，对外资源位于 `static/`。`source/images/` 保留原图片，当前对外副本在 `static/images/`，更新图片时需要同时核对这两处。
+
+站名使用 Chillax，正文使用 Georgia／思源宋体，代码使用 Maple Mono CN。思源宋体和 Chillax 随站点提供；Maple Mono CN、Giscus 与 Vercount 使用外部服务。Chillax 来源与作者见 [字体样式](src/styles/main-font.css)，思源宋体分发遵循其 SIL OFL 1.1 许可。
+
+发布前状态、旧实现清理清单和部署切换要求见 [迁移收尾](MIGRATION.md)。

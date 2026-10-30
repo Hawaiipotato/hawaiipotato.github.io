@@ -18,16 +18,11 @@ Thumbs.db
 *.sw?
 *~
 
-# Hexo
+# Dependencies and local build output
 node_modules/
-db.json
 *.log
-public/
-.deploy*/
-_multiconfig.yml
 
-# npm
-package-lock.json
+# npm (commit package-lock.json for reproducible installs)
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
@@ -38,3 +33,7 @@ yarn-error.log*
 
 # Local planning notes
 future-plans.md
+
+# Astro output
+dist/
+.astro/

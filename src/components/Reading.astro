@@ -1,0 +1,8 @@
+---
+const {headings=[]}=Astro.props;
+---
+<progress class="reading-progress" max="1" value="0" aria-label="阅读进度"></progress>
+{headings.length>0&&<div class="toc-root"><button class="toc-fab" aria-controls="toc-panel" aria-expanded="false">目录</button><div class="toc-backdrop" hidden></div><nav id="toc-panel" class="toc-panel" aria-label="文章目录"><div class="toc-head"><strong>目录</strong><button class="toc-close">关闭</button></div><ol>{headings.map((h:any)=><li style={`padding-left:${Math.max(0,h.depth-2)*14}px`}><a href={`#${h.slug}`}>{h.text}</a></li>)}</ol></nav></div>}
+<button class="back-top" aria-label="回顶部" hidden>↑</button>
+<section id="comments" class="comments" aria-label="评论"><h2>评论</h2><div id="giscus-mount"></div></section>
+<script>import "../scripts/reading";</script>

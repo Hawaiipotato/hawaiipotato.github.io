@@ -1,0 +1,5 @@
+@import 'cn-fontsource-source-han-serif-sc-vf/font.css';
+/* Chillax — Manushi Parikh / Indian Type Foundry, https://www.fontshare.com/fonts/chillax */
+@font-face { font-family: 'Chillax-Variable'; src: url('/fonts/Chillax-Variable.woff2') format('woff2'); font-weight: 200 700; font-style: normal; font-display: swap; }
+body { font-family: Georgia, 'Source Han Serif SC VF', 'Source Han Serif SC', 'Songti SC', SimSun, serif; }
+.brand { font-family: 'Chillax-Variable', sans-serif; font-weight: 520; }

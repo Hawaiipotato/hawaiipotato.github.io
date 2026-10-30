@@ -1,0 +1,16 @@
+---
+import {posts} from '../lib/content';
+---
+<div class="footer-stats">
+  <div class="footer-row"><p>© {new Date().getFullYear()} Potato · {posts.length} 篇文章 · {posts.reduce((n,p)=>n+p.words,0).toLocaleString('en-US')} 字</p>
+  <nav class="footer-links" aria-label="页脚导航"><a href="https://github.com/Hawaiipotato">GitHub</a><a href="mailto:hawaiipotatoes@gmail.com">邮箱</a><a href="/categories/">分类</a><a href="/tags/">标签</a></nav>
+  </div>
+  <div class="footer-row"><p class="footer-uptime">本站已稳定运行 <span id="runtime-days">—</span> 天 <span id="runtime-hours">—</span> 时 <span id="runtime-minutes">—</span> 分 <span id="runtime-seconds">—</span> 秒</p>
+  <p>访问 <span id="busuanzi_value_site_pv">—</span> · 访客 <span id="busuanzi_value_site_uv">—</span></p>
+  </div>
+</div>
+<script is:inline async src="https://cn.vercount.one/js"></script>
+<script>
+// Keep the original Hexo runtime semantics; derive every tick from wall time.
+function updateRuntime(){const seconds=Math.max(0,Math.floor((Date.now()-Date.parse('2026-02-12T12:00:00+08:00'))/1000));const values={days:Math.floor(seconds/86400),hours:Math.floor(seconds/3600)%24,minutes:Math.floor(seconds/60)%60,seconds:seconds%60};for(const [unit,value]of Object.entries(values)){const node=document.getElementById(`runtime-${unit}`);if(node)node.textContent=unit==='days'?String(value):String(value).padStart(2,'0');}}updateRuntime();setInterval(updateRuntime,1000);
+</script>

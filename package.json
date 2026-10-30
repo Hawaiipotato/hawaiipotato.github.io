@@ -1,29 +1,24 @@
 {
-  "name": "hexo-site",
-  "version": "0.0.0",
+  "name": "potato-blog",
+  "version": "1.0.0",
   "private": true,
+  "type": "module",
   "scripts": {
-    "build:theme": "npm --prefix themes/redefine run build",
-    "build:site": "hexo generate",
-    "build": "npm run build:theme && npm run build:site",
-    "clean": "hexo clean",
-    "deploy": "hexo deploy",
-    "server": "npm run build:theme && hexo server"
-  },
-  "hexo": {
-    "version": "8.1.1"
+    "dev": "astro dev",
+    "server": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "test": "node --test src/lib/content.test.ts",
+    "verify": "npm test && npm run build && node src/scripts/verify-build.cjs"
   },
   "dependencies": {
-    "hexo": "^8.0.0",
-    "hexo-generator-archive": "^2.0.0",
-    "hexo-generator-category": "^2.0.0",
-    "hexo-generator-index": "^4.0.0",
-    "hexo-generator-tag": "^2.0.0",
-    "hexo-renderer-ejs": "^2.0.0",
-    "hexo-renderer-marked": "^7.0.0",
-    "hexo-renderer-stylus": "^3.0.1",
-    "hexo-server": "^3.0.0",
-    "hexo-theme-landscape": "^1.0.0",
-    "js-yaml": "^4.2.0"
+    "@astrojs/markdown-satteri": "0.4.6",
+    "astro": "7.4.4",
+    "cn-fontsource-source-han-serif-sc-vf": "1.0.9",
+    "js-yaml": "^4.2.0",
+    "medium-zoom": "1.1.2"
+  },
+  "engines": {
+    "node": ">=24.19.0"
   }
 }
